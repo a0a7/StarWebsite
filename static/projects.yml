@@ -1,0 +1,47 @@
+portfolio_website:
+  name: My Portfolio Website
+  logo: portfolio_website.png
+  splash: portfolio_website.png
+  github: sudolev/portfolio-website
+  modrinth_url: 
+  modrinth_id:
+  curseforge_url:
+  curseforge_id:
+  url:
+  start_date: 2023-02-16
+  end_date: 2023-10-16
+  role: Solo
+  technologies:
+    - HTML
+    - CSS
+    - JavaScript
+    - React
+    - Node.js
+    - Express
+    - MongoDB
+  description: |
+    This is my portfolio website. It is a full-stack web application built with React, Node.js, Express, and MongoDB. It is hosted on Heroku.
+
+bum_website:
+  name: My Portfolio Website
+  logo: portfolio_website.png
+  splash: portfolio_website.png
+  github: sudolev/portfolio-website
+  modrinth_url: 
+  modrinth_id:
+  curseforge_url:
+  curseforge_id:
+  url:
+  start_date: 2023-02-16
+  end_date: 2023-10-16
+  role: Solo
+  technologies:
+    - HTML
+    - CSS
+    - JavaScript
+    - React
+    - Node.js
+    - Express
+    - MongoDB
+  description: |
+    This is my portfolio website. It is a full-stack web application built with React, Node.js, Express, and MongoDB. It is hosted on Heroku.

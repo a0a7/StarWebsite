@@ -16,6 +16,10 @@
       <a href="{project.url}" target="_blank" class="text-blue-500 hover:underline">[Web]</a>
     {/if}
   </h2>
-
   <p class="text-sm">{project.description}</p>
+  <div class="flex flex-row space-x-2">
+    {#each project.technologies as tag}
+      <span class="text-xs bg-gray-700 text-white rounded-md px-1"><img src="{`logos/${tag}`}" alt="{`${tag} icon`}"></span>
+    {/each}
+  </div>
 </div>

@@ -26,6 +26,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"vanilla-tilt-svelte": "^1.0.4",
 		"yaml": "^2.3.4"
 	}
 }

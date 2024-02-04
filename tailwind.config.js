@@ -12,8 +12,6 @@ export default {
       },
       colors: {
         'fuchsia-975': '#09000d',
-
-    
         'glass-950': '#040D12',
         'glass-900': '#183D3D',
         'glass-800': '#5C8374',

@@ -18,13 +18,12 @@
     });
 </script>
 
-<main class="m-5 justify-between items-left text-left l-0">
+<main class="m-10 justify-between items-left text-left l-0">
     <span class="text-6xl font-bold font-mastery text-fuchsia-50">
         <h2 class="">alexander</h2>
-        <h2 class="">weimer</h2>
+        <h2 class="pl-6">weimer</h2>
     </span>
     <div class="items-left">
-
         {#if projects}
             {#each Object.entries(projects) as [key, project]}
             <ProjectCard {project} />

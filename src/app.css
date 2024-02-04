@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family:'AffiliateMastery';
+    src: url(./font/AffiliateMasteryRegular.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    license: url(./font/AffiliateMasteryLicense.txt);
+}

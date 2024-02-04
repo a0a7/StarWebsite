@@ -18,9 +18,11 @@
     });
 </script>
 
-<main class="m-5 justify-between items-left ">
-    <h2 class="text-2xl text-white/500 p-1">ALEXANDER</h2>
-    <h2 class="text-2xl text-white/500 p-1">WEIMER</h2>
+<main class="m-5 justify-between items-left text-left l-0">
+    <span class="text-6xl font-bold font-mastery text-fuchsia-50">
+        <h2 class="">alexander</h2>
+        <h2 class="">weimer</h2>
+    </span>
     <div class="items-left">
 
         {#if projects}

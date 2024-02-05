@@ -1,18 +1,63 @@
 portfolio_website:
-  name: My Portfolio Website
+  name: Portfolio Website
   github: sudolev/StarWebsite
   modrinth_url: 
   modrinth_id:
   curseforge_url:
   curseforge_id:
   url: 
-  start_date: 2023-02-16
-  end_date: 2023-10-16
+  start_date: 2024-02-16
+  end_date: 2024-02-16
   technologies:
     - Svelte
     - TypeScript
     - Tailwind CSS
   description: |
+    This website
+
+dynamic_village_mod:
+  name: "Create: Dynamic Village"
+  github: sudolev/DynamicVillageMod
+  modrinth_url: https://modrinth.com/mod/dynamic-village
+  curseforge_url: https://www.curseforge.com/minecraft/mc-mods/dynamic-village
+  url:
+  start_date: 2023-10-16
+  end_date: 2024-02-16
+  technologies:
+    - Java
+    - Gradle
+  description: |
+    A Minecraft mod that expands villages to fit with the Create mod.
+
+plackard_generator:
+  name: Name Plackard Generator
+  github: sudolev/PlackardGenerator
+  url: https://plackards.pages.dev
+  start_date: 2023-09-16
+  end_date: 2023-12-16
+  technologies:
+    - Javascript
+    - HTML
+    - CSS
+  description: |
+    A tool to create a profile card displaying your Strava statistics. 
+
+
+interiors_mod:
+  name: "Create: Interiors"
+  github: sudolev/CreateInteriorsMod
+  modrinth_url: https://modrinth.com/mod/interiors
+  curseforge_url: https://www.curseforge.com/minecraft/mc-mods/interiors
+  url:
+  start_date: 2023-08-16
+  end_date: 2023-11-16
+  technologies:
+    - Java
+    - Gradle
+    - Blockbench
+  description: |
+    A Minecraft mod that expands interior decoration.
+
     
 bells_and_whistles_mod:
   name: "Create: Bells and Whistles"
@@ -22,11 +67,52 @@ bells_and_whistles_mod:
   curseforge_url: https://www.curseforge.com/minecraft/mc-mods/bellsandwhistles
   curseforge_id: 905040
   url:
-  start_date: 2023-02-16
-  end_date: 2023-10-16
+  start_date: 2023-08-16
+  end_date: 2023-11-16
   technologies:
     - Java
     - Gradle
     - Blockbench
   description: |
     A Minecraft mod that adds a variety of train-related blocks to the game.
+
+strava_card:
+  name: Strava Stats Card Generator
+  github: sudolev/StravaStatsCard
+  url: https://stravacard.pages.dev 
+  start_date: 2023-04-16
+  end_date: 2023-04-16
+  technologies:
+    - Javascript
+    - HTML
+    - CSS
+  description: |
+    A tool to create a profile card displaying your Strava statistics. 
+
+strava_map:
+  name: Strava Activity Mapper
+  github: sudolev/StravaMapper
+  url: https://sudolev.github.io/StravaMapper/ 
+  start_date: 2023-04-16
+  end_date: 2023-04-16
+  technologies:
+    - Javascript
+    - jQuery
+    - Leaflet.JS
+    - HTML
+    - CSS
+  description: |
+    A mobile-friendly webapp to map Strava activities onto a highly customizable map. 
+
+signboard_generator:
+  name: Signboard Generator
+  github: sudolev/Signboard
+  url: https://sudolev.github.io/signboard/
+  start_date: 2023-03-16
+  end_date: 2023-04-16
+  technologies:
+    - Javascript
+    - HTML
+    - CSS
+  description: |
+    A simple webtoy to make images in the style of roadside signboards you see.

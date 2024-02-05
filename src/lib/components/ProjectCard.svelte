@@ -1,11 +1,10 @@
 <script lang="ts">
-	import { parse } from 'yaml';
     import svelteTilt from 'vanilla-tilt-svelte';
     export let project: any
 </script>
   
 <div 
-  class="bg-glassomorphism md:w-[25rem] w-full p-4 my-5" 
+  class="bg-glassomorphism md:w-[25rem] w-full p-4 my-4 overflow-x-visible" 
   use:svelteTilt={{
     max: 15,
     perspective: 1500,
@@ -20,20 +19,22 @@
   <h2 class="text-xl text-bold text-fuchsia-50 font-varela">
     {project.name} 
     <a href={`https://github.com/${project.github}`} target="_blank" class="color-white inline">
-      <img src="img/logos/github.svg" class="w-5 linkicon inline">
+      <img src="img/logos/github.svg" alt="Github Icon" class="w-5 linkicon inline">
     </a>
-    {#if project.curseforge_url}
-      <a href="{project.curseforge_url}" target="_blank" class="color-white w-8">
-        <img src="img/logos/curseforge.svg" class="w-5 linkicon inline">
-      </a>
-    {/if}
     {#if project.modrinth_url}
       <a href="{project.modrinth_url}" target="_blank" class="color-white">
-        <img src="img/logos/modrinth.svg" class="w-5 linkicon inline">
+        <img src="img/logos/modrinth.svg" alt="Modrinth Icon" class="w-5 linkicon inline">
       </a>
     {/if}
+    {#if project.curseforge_url}
+    <a href="{project.curseforge_url}" target="_blank" class="color-white w-8">
+      <img src="img/logos/curseforge.svg" alt="Curseforge Icon" class="w-5 linkicon inline">
+    </a>
+    {/if}
     {#if project.url}
-      <a href="{project.url}" target="_blank" class="color-white">[Web]</a>
+      <a href="{project.url}" target="_blank" class="color-white">
+        <img src="img/logos/web.svg" alt="Web Icon" class="w-5 linkicon inline">
+      </a>
     {/if}
   </h2>
   <p class="text-sm text-fuchsia-50 font-varela opacity-85">

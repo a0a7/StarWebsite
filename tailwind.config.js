@@ -4,7 +4,8 @@ export default {
     theme: {
     extend: {
       fontFamily: {
-        mastery: ['"AffiliateMastery"', "sans-serif"],
+        mastery: ['"AffiliateMastery"', "serif"],
+        varela: ['"VarelaRound"', "sans-serif"],
       },
       scale: {
         '90': '0.9',

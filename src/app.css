@@ -89,12 +89,16 @@ html, body {
     background: #2d1c36;
 }
 
-@font-face {
-    font-family:'AffiliateMastery';
-    src: url(./font/AffiliateMasteryRegular.otf) format('opentype');
-}
-
-@font-face {
-    font-family:'VarelaRound';
-    src: url(./font/VarelaRound.ttf) format('truetype');
+@layer base {
+    @font-face {
+        font-family:'AffiliateMastery';
+        src: url(/font/AffiliateMasteryRegular.otf) format('opentype');
+        font-display: swap;
+    }
+    
+    @font-face {
+        font-family:'VarelaRound';
+        src: url(/font/VarelaRound.ttf) format('truetype');
+        font-display: swap;
+    }    
 }

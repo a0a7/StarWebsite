@@ -5,12 +5,10 @@
 
     let projects: any
 	onMount(async () => {
-        fetch('src/projects.yml')
+        fetch('projects.yml')
             .then(response => response.text())
             .then(data => {
-                console.log(data);
                 projects = parse(data)
-                console.log(projects)
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -20,7 +18,7 @@
 
 <svelte:head>
     <title>Alexander Weimer</title> 
-    <meta name="description" content="Alexander Akira Weimer Web Dev Portfolio">
+    <meta name="description" content="Alexander Akira Weimer Developer Portfolio">
     <meta name="keywords" content="Weimer, Alexander, Alexander Akira Weimer">
     <meta name="author" content="Alexander Akira Weimer">
 </svelte:head>

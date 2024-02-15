@@ -1,4 +1,24 @@
 @tailwind base;
+
+* {
+    scrollbar-width: 15px;
+    scrollbar-color:  #261e29 #12001a;
+}
+
+*::-webkit-scrollbar {
+    width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #12001a;
+    border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #261e29;
+    border-radius: 10px;
+    border: 1px solid #b899c8;
+}
 @tailwind components;
 @tailwind utilities;
 
@@ -18,19 +38,24 @@ html, body {
 .linkicon,
 .whiteicon {
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7492%) hue-rotate(267deg) brightness(99%) contrast(102%);
+    transition: transform 0.05s ease-in;
+}
+
+.linkicon:hover,
+.whiteicon:hover {
+    transform: scale(1.1);
 }
 
 .linkicon {
     position: relative;
 }
 
-.linkicon:hover,
-.whiteicon:hover {
+.linkicon:hover {
     opacity: 0.8;
 }
 
 .tooltip {
-    position:relative;
+    position: relative;
     text-align: center;
     align-items: center;
     align-self: center;
@@ -40,12 +65,13 @@ html, body {
     content: attr(data-text);
     position: absolute;
 
-    top: -125%;
+    top: -135%;
     transform: translateX(-25%);
 
-    padding: 5px;
-    border-radius: 5px;
+    padding: 2px 5px 2px 5px;
+    border-radius: 4px;
     background:#09000d;
+    opacity: 0.95;
     color: #fff;
 
     text-align: center;
@@ -59,6 +85,9 @@ html, body {
     display:block;
 }
 
+::selection {
+    background: #2d1c36;
+}
 
 @font-face {
     font-family:'AffiliateMastery';

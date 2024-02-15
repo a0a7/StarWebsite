@@ -10,8 +10,8 @@ portfolio_website:
   end_date: 2024-02-16
   technologies:
     - Svelte
-    - TypeScript
-    - Tailwind CSS
+    - Typescript
+    - Tailwind
   description: |
     This website
 
@@ -27,7 +27,7 @@ dynamic_village_mod:
     - Java
     - Gradle
   description: |
-    A Minecraft mod that expands villages to fit with the Create mod.
+    Minecraft mod that expands villages to fit with the Create mod.
 
 plackard_generator:
   name: Name Plackard Generator
@@ -40,8 +40,7 @@ plackard_generator:
     - HTML
     - CSS
   description: |
-    A tool to create a profile card displaying your Strava statistics. 
-
+    Online tool to design visually appealing Congressional Debate plackards.
 
 interiors_mod:
   name: "Create: Interiors"
@@ -56,11 +55,11 @@ interiors_mod:
     - Gradle
     - Blockbench
   description: |
-    A Minecraft mod that expands interior decoration.
+    Minecraft mod that expands interior decoration for the Create mod.
 
     
 bells_and_whistles_mod:
-  name: "Create: Bells and Whistles"
+  name: "Bells and Whistles Mod"
   github: sudolev/BellsAndWhistlesMod
   modrinth_url: https://modrinth.com/mod/bellsandwhistles
   modrinth_id: gJ5afkVv
@@ -74,7 +73,7 @@ bells_and_whistles_mod:
     - Gradle
     - Blockbench
   description: |
-    A Minecraft mod that adds a variety of train-related blocks to the game.
+    Minecraft mod that adds a variety of train-related blocks to the game.
 
 strava_card:
   name: Strava Stats Card Generator
@@ -102,7 +101,7 @@ strava_map:
     - HTML
     - CSS
   description: |
-    A mobile-friendly webapp to map Strava activities onto a highly customizable map. 
+    A mobile-friendly web app to map Strava activities built with customization in mind. 
 
 signboard_generator:
   name: Signboard Generator
@@ -115,4 +114,4 @@ signboard_generator:
     - HTML
     - CSS
   description: |
-    A simple webtoy to make images in the style of those roadside signboards.
+    A simple webtoy to make images in the style of roadside signboards.

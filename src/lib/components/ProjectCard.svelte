@@ -39,16 +39,16 @@
   </h2>
   <p class="text-sm text-fuchsia-50 font-varela opacity-85">
     {(() => {
-      let startDate = new Date(project.start_date);
-      let endDate = new Date(project.end_date);
+      
+      let startDate = new Date(project.start_date)
+        .toLocaleString([], { month: "short", year: "numeric" }),
+      endDate = new Date(project.end_date)
+        .toLocaleString([], { month: "short", year: "numeric" });
 
-      return `${startDate.toLocaleString([], {
-        month: "short",
-        year: "numeric"
-      })} - ${endDate.toLocaleString([], {
-        month: "short",
-        year: "numeric"
-      })}`}
+      return startDate 
+        + (startDate == endDate 
+        ? ""
+        : ` - ${endDate}`)}
     )()}
   </p>
   <p class="text-sm text-fuchsia-50 pt-2 font-varela">{project.description}</p>

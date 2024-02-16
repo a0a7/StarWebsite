@@ -1,10 +1,14 @@
 <script lang="ts">
     import ProjectCard from "$lib/components/ProjectCard.svelte";
+    import PublicationCard from "$lib/components/PublicationCard.svelte";
+
     import { parse } from 'yaml'
     import { onMount } from 'svelte';
 
     let projects: any
-	onMount(async () => {
+    let publications: any
+
+    onMount(async () => {
         fetch('projects.yml')
             .then(response => response.text())
             .then(data => {
@@ -14,12 +18,25 @@
                 console.error('Error:', error);
             });
     });
+    onMount(async () => {
+        fetch('publications.yml')
+            .then(response => response.text())
+            .then(data => {
+                publications = parse(data)
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    });
+
+
 
     enum Pages {
-        About = 1,
-        Projects,
-        Publications
+        profile,
+        projects
     }
+    
+    var currentPage: number = Pages.projects;
 </script>
 
 <svelte:head>
@@ -33,21 +50,28 @@
     <div class="flex flex-col h-[100vh] px-5 pt-4 w-full">
         <h1 class="transform scale-0">Alexander Akira Weimer</h1> <!-- SEO -->
         <span class="w-full text-center justify-center flex items-center md:text-center font-bold font-mastery text-fuchsia-50">
-            <img class="linkicon inline w-8 mr-10 mt-4 cursor-pointer transform rotate-180 hover:rotate-180" 
-                src="img/icons/arrow.svg" 
-                alt="Left-pointing carousel arrow"
-            />
-            <h2 class="text-5xl md:text-6xl inline">projects</h2>
-            <img class="linkicon inline w-8 ml-10 mt-4 cursor-pointer" 
-                src="img/icons/arrow.svg" 
-                alt="Right-pointing carousel arrow"
-            />
+
+            <h2 class="text-5xl md:text-6xl inline ml-[32px] text-center w-[387px] md:w-[484px]">{Pages[currentPage]}</h2>
+                <button type="button" 
+                    on:click={() => {currentPage = (currentPage + 1) % (Object.keys(Pages).length / 2); console.log(currentPage)}}
+                >
+                    <img class="linkicon inline w-8 mt-4 cursor-pointer transform hover:transform {currentPage >= ((Object.keys(Pages).length / 2) - 1) ? 'transform rotate-180' : ''}" 
+                        src="img/icons/arrow.svg" 
+                        alt="Right-pointing carousel arrow"
+                    />
+                </button>
         </span>
         <div class="overflow-y-scroll overflow-x-visible px-5 my-8 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex">
-            {#if projects}
-                {#each Object.entries(projects) as [key, project]}
-                    <ProjectCard {project} />
-                {/each}
+            {#if currentPage === Pages.profile}
+            <p>placeholder</p>
+            {:else if currentPage === Pages.projects}
+                {#if projects}
+                    {#each Object.entries(projects) as [key, project]}
+                        <ProjectCard {project} />
+                    {/each}
+                {/if}
+            {:else}
+                <p class="text-2xl w-full text-center text-white font-bold font-varela">You're not supposed to see this. Reload the page and it should go away.</p>
             {/if}
         </div>
     </div>

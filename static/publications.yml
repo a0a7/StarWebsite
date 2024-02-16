@@ -1,0 +1,15 @@
+sample_publication:
+  name: Sample Publication
+  publisher: Sample Publisher
+  link: https://springer.com/publication
+  date: 2024-02-16
+  description: |
+    A publication of all time
+
+sample_publication2:
+  name: Sample Publication
+  publisher: Sample Publisher
+  link: https://springer.com/publication
+  date: 2024-02-16
+  description: |
+    A publication of all time

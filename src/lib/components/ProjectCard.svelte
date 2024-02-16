@@ -1,22 +1,11 @@
 <script lang="ts">
     import svelteTilt from 'vanilla-tilt-svelte';
+    import AbstractCard from './AbstractCard.svelte';
     export let project: any
 </script>
-  
-<div 
-  class="bg-glassomorphism md:w-[30rem] flex-1 p-4 my-4 overflow-x-visible" 
-  use:svelteTilt={{
-    max: 15,
-    perspective: 1500,
-    scale: 1.05,
-    speed: 500,
-    glare: true,
-    "max-glare": 0.3,
-    "glare-prerender": false,
-    gyroscope: true,
-  }}
->
-  <h2 class="text-xl text-bold text-fuchsia-50 font-varela">
+
+<AbstractCard>
+  <svelte:fragment slot="title">
     <a href={`https://github.com/${project.github}`} target="_blank" class="text-white color-white linktext inline">
       {project.name} 
     </a>
@@ -38,8 +27,8 @@
         <img src="img/logos/web.svg" alt="Web Icon" class="w-5 linkicon inline">
       </a>
     {/if}
-  </h2>
-  <p class="text-sm text-fuchsia-50 font-varela opacity-85">
+  </svelte:fragment>
+  <svelte:fragment slot="date">
     {(() => {
       
       let startDate = new Date(project.start_date)
@@ -52,16 +41,18 @@
         ? ""
         : ` - ${endDate}`)}
     )()}
-  </p>
-  <p class="text-sm text-fuchsia-50 pt-2 font-varela">{project.description}</p>
-  <div class="flex flex-row space-x-2 pt-2">
-    {#each project.technologies as tag}
-      <span class="pr-1 tooltip font-varela" data-text="{tag}">
-        <img class="w-6 whiteicon"
-          src="{`img/logos/${tag.toLowerCase().replace(/[ .]/g, '')}.svg`}"
-          alt="{tag} icon"
-        >
-      </span>
-    {/each}
-  </div>
-</div>
+  </svelte:fragment>
+  <svelte:fragment slot="end">
+    <p class="text-sm text-fuchsia-50 pt-2 font-varela">{project.description}</p>
+    <div slot="end" class="flex flex-row space-x-2 pt-2">
+      {#each project.technologies as tag}
+        <span class="pr-1 tooltip font-varela" data-text="{tag}">
+          <img class="w-6 whiteicon"
+            src="{`img/logos/${tag.toLowerCase().replace(/[ .]/g, '')}.svg`}"
+            alt="{tag} icon"
+          >
+        </span>
+      {/each}
+    </div>
+  </svelte:fragment>
+</AbstractCard>

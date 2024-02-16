@@ -17,7 +17,9 @@
   }}
 >
   <h2 class="text-xl text-bold text-fuchsia-50 font-varela">
-    {project.name} 
+    <a href={`https://github.com/${project.github}`} target="_blank" class="text-white color-white linktext inline">
+      {project.name} 
+    </a>
     <a href={`https://github.com/${project.github}`} target="_blank" class="color-white inline">
       <img src="img/logos/github.svg" alt="Github Icon" class="w-5 linkicon inline">
     </a>

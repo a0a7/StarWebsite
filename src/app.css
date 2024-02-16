@@ -46,11 +46,14 @@ html, body {
     transform: scale(1.1);
 }
 
-.linkicon {
+.linkicon,
+.linktext {
     position: relative;
+    text-decoration: none;
 }
 
-.linkicon:hover {
+.linkicon:hover,
+.linktext:hover {
     opacity: 0.8;
 }
 

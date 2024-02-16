@@ -1,5 +1,4 @@
 <script lang="ts">
-    import svelteTilt from 'vanilla-tilt-svelte';
     import AbstractCard from './AbstractCard.svelte';
     export let project: any
 </script>

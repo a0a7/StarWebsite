@@ -1,0 +1,18 @@
+cycling:
+  type: Cycling
+  achievement:
+    - name: "Total Distance"
+      value: "2,500km"
+    - name: "Longest Ride"
+      value: "162km"
+
+mods:
+  type: Mods
+  achievement:
+    - name: "Total Downloads"
+      value: "2.5m"
+    - name: "Total Commits"
+      value: "300"
+    - name: "Total Versions"
+      value: "26"
+

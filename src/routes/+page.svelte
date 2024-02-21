@@ -1,12 +1,14 @@
 <script lang="ts">
     import ProjectCard from "$lib/components/ProjectCard.svelte";
     import PublicationCard from "$lib/components/PublicationCard.svelte";
+    import StatsCard from "$lib/components/StatsCard.svelte";
 
     import { parse } from 'yaml'
     import { onMount } from 'svelte';
 
     let projects: any
     let publications: any
+    let statistics: any
 
     onMount(async () => {
         fetch('projects.yml')
@@ -19,10 +21,10 @@
             });
     });
     onMount(async () => {
-        fetch('publications.yml')
+        fetch('stats.yml')
             .then(response => response.text())
             .then(data => {
-                publications = parse(data)
+                statistics = parse(data)
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -63,7 +65,11 @@
         </span>
         <div class="overflow-y-scroll overflow-x-visible px-5 my-8 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex">
             {#if currentPage === Pages.profile}
-            <p>placeholder</p>
+                {#if statistics}
+                    {#each Object.entries(statistics) as [key, stats]}
+                        <StatsCard {stats} />
+                    {/each}
+                {/if}
             {:else if currentPage === Pages.projects}
                 {#if projects}
                     {#each Object.entries(projects) as [key, project]}

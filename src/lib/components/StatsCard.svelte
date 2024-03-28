@@ -5,12 +5,12 @@
 
 <div 
   class="md:w-[30rem] p-4 my-4 overflow-x-visible rounded-2xl" 
-  use:svelteTilt={{
+  use:svelteTilt={{ 
     max: 15,
     perspective: 1500,
     scale: 1.05,
     speed: 500,
-    glare: true,
+    glare: true, // @ts-expect-error: it exists
     "max-glare": 0.3,
     "glare-prerender": false,
     gyroscope: true,

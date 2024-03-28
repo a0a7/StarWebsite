@@ -1,6 +1,35 @@
+svelte_strava_mapper:
+  name: Svelte Multi-Activity Heatmap
+  github: syslev/StravaMultiMapper
+  url: "https://stravamap.pages.dev/"
+  start_date: 2024-03-28
+  end_date: 2024-03-02
+  technologies:
+    - Svelte
+    - Typescript
+    - Tailwind
+    - MapLibre
+    - OAuth2
+  description: |
+    An ultra-fast, ultra-free, and ultra-customizable Strava heatmap tool.
+
+transit_cards_map:
+  name: Transit Fare Card Map
+  github: syslev/TransitCardsMap
+  url: "https://transitcards.pages.dev/"
+  start_date: 2024-02-28
+  end_date: 2024-03-29
+  technologies:
+    - Svelte
+    - Typescript
+    - Tailwind
+    - MapLibre
+  description: |
+    A visual database of transit fare cards from around the world
+
 portfolio_website:
   name: Portfolio Website
-  github: sudolev/StarWebsite
+  github: syslev/StarWebsite
   modrinth_url: 
   modrinth_id:
   curseforge_url:
@@ -17,7 +46,7 @@ portfolio_website:
 
 dynamic_village_mod:
   name: "Create: Dynamic Village"
-  github: sudolev/DynamicVillageMod
+  github: aesefficio/DynamicVillageMod
   modrinth_url: https://modrinth.com/mod/dynamic-village
   curseforge_url: https://www.curseforge.com/minecraft/mc-mods/dynamic-village
   url:
@@ -31,7 +60,7 @@ dynamic_village_mod:
 
 plackard_generator:
   name: Name Plackard Generator
-  github: sudolev/PlackardGenerator
+  github: syslev/PlackardGenerator
   url: https://plackards.pages.dev
   start_date: 2023-09-16
   end_date: 2023-12-16
@@ -44,7 +73,7 @@ plackard_generator:
 
 interiors_mod:
   name: "Create: Interiors"
-  github: sudolev/CreateInteriorsMod
+  github: aesefficio/CreateInteriorsMod
   modrinth_url: https://modrinth.com/mod/interiors
   curseforge_url: https://www.curseforge.com/minecraft/mc-mods/interiors
   url:
@@ -60,7 +89,7 @@ interiors_mod:
     
 bells_and_whistles_mod:
   name: "Bells and Whistles Mod"
-  github: sudolev/BellsAndWhistlesMod
+  github: aesefficio/BellsAndWhistlesMod
   modrinth_url: https://modrinth.com/mod/bellsandwhistles
   modrinth_id: gJ5afkVv
   curseforge_url: https://www.curseforge.com/minecraft/mc-mods/bellsandwhistles
@@ -77,7 +106,7 @@ bells_and_whistles_mod:
 
 strava_card:
   name: Strava Stats Card Generator
-  github: sudolev/StravaStatsCard
+  github: syslev/StravaStatsCard
   url: https://stravacard.pages.dev 
   start_date: 2023-04-16
   end_date: 2023-04-16
@@ -90,8 +119,8 @@ strava_card:
 
 strava_map:
   name: Strava Activity Mapper
-  github: sudolev/StravaMapper
-  url: https://sudolev.github.io/StravaMapper/ 
+  github: syslev/StravaMapper
+  url: https://syslev.github.io/StravaMapper/ 
   start_date: 2023-04-16
   end_date: 2023-04-16
   technologies:
@@ -105,8 +134,8 @@ strava_map:
 
 signboard_generator:
   name: Signboard Generator
-  github: sudolev/Signboard
-  url: https://sudolev.github.io/signboard/
+  github: syslev/Signboard
+  url: https://syslev.github.io/signboard/
   start_date: 2023-03-16
   end_date: 2023-04-16
   technologies:

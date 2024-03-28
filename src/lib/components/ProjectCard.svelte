@@ -47,7 +47,7 @@
       {#each project.technologies as tag}
         <span class="pr-1 tooltip font-varela" data-text="{tag}">
           <img class="w-6 whiteicon"
-            src="{`img/logos/${tag.toLowerCase().replace(/[ .]/g, '')}.svg`}"
+            src="{`img/logos/${tag.split(' ')[0].toLowerCase().replace(/[ .]/g, '')}.svg`}"
             alt="{tag} icon"
           >
         </span>

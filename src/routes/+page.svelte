@@ -9,6 +9,7 @@
     let projects: any
     let publications: any
     let statistics: any
+    let list: HTMLElement;
 
     onMount(async () => {
         fetch('projects.yml')
@@ -31,7 +32,17 @@
             });
     });
 
-
+    onMount(() => {
+        list.addEventListener('scroll', () => {
+            const scrollProgress = list.scrollTop / (list.scrollHeight - list.offsetHeight);
+            const center = (list.scrollTop + Math.max(list.offsetHeight / 2.35, Math.min(list.offsetHeight / 1.04, list.offsetHeight * scrollProgress)) );
+            for (let item of list.children) {
+            const relativePos = center - ((item as HTMLElement).offsetTop + (item as HTMLElement).offsetHeight / 2);
+            const minScale = Math.max(0.5, 1 - Math.abs(relativePos) / 3500);
+            (item as HTMLElement).style.transform = `scale(${minScale})`;
+            }
+        });
+        });
 
     enum Pages {
         profile,
@@ -50,32 +61,32 @@
 
 <main class="justify-between items-center l-0">
     <div class="flex flex-col h-[100vh] px-5 pt-4 w-full">
-        <h1 class="transform scale-0">Alexander Akira Weimer</h1> <!-- SEO -->
+        <h1 class="transform scale-0">Alexander Weimer - Portfolio</h1> <!-- SEO -->
         <span class="w-full text-center justify-center flex items-center md:text-center font-bold font-mastery text-fuchsia-50">
 
             <h2 class="text-5xl md:text-6xl inline ml-[32px] text-center w-[387px] md:w-[484px]">{Pages[currentPage]}</h2>
-                <button type="button" 
+                <!--<button type="button" 
                     on:click={() => {currentPage = (currentPage + 1) % (Object.keys(Pages).length / 2); console.log(currentPage)}}
                 >
                     <img class="linkicon inline w-8 mt-4 cursor-pointer transform hover:transform {currentPage >= ((Object.keys(Pages).length / 2) - 1) ? 'transform rotate-180' : ''}" 
                         src="img/icons/arrow.svg" 
                         alt="Right-pointing carousel arrow"
                     />
-                </button>
+                </button>-->
         </span>
-        <div class="overflow-y-scroll overflow-x-visible px-5 my-8 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex">
+        <div class="overflow-y-scroll overflow-x-show px-5 my-8 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex" bind:this={list}>
             {#if currentPage === Pages.profile}
-                {#if statistics}
-                    {#each Object.entries(statistics) as [key, stats]}
-                        <StatsCard {stats} />
-                    {/each}
-                {/if}
+                    {#if statistics}
+                        {#each Object.entries(statistics) as [key, stats]}
+                        <div><StatsCard {stats} /></div>
+                        {/each}
+                    {/if}
             {:else if currentPage === Pages.projects}
-                {#if projects}
-                    {#each Object.entries(projects) as [key, project]}
-                        <ProjectCard {project} />
-                    {/each}
-                {/if}
+                    {#if projects}
+                        {#each Object.entries(projects) as [key, project]}
+                            <div><ProjectCard {project} /></div>
+                        {/each}
+                    {/if}
             {:else}
                 <p class="text-2xl w-full text-center text-white font-bold font-varela">You're not supposed to see this. Reload the page and it should go away.</p>
             {/if}

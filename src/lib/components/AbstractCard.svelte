@@ -3,7 +3,7 @@
 </script>
   
 <div 
-  class="bg-glassomorphism md:w-[30rem] flex-1 p-4 my-4 overflow-x-visible" 
+  class="bg-glassomorphism md:w-[30rem] flex-1 p-4 my-4 overflow-x-visible transition-transform" 
   use:svelteTilt={{
     max: 15,
     perspective: 1500,

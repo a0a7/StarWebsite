@@ -4,7 +4,7 @@
 </script>
 
 <div 
-  class="md:w-[30rem] p-4 my-4 overflow-x-visible rounded-2xl" 
+  class="md:w-[30rem] p-4 my-4 overflow-x-visible rounded-2xl transition-transform" 
   use:svelteTilt={{ 
     max: 15,
     perspective: 1500,

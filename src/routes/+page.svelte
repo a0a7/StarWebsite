@@ -11,13 +11,17 @@
     let loaded: boolean = false;
     let statistics: any;
     let list: HTMLElement;
+
+    function lerp(start: number, end: number, t: number) {
+        return start * (1 - t) + end * t;
+    }
        
     const resizeAfterScroll = () => {
         const scrollProgress = (list.scrollTop / (list.scrollHeight - list.offsetHeight)) ?? 0;
-        const center = (list.scrollTop + Math.max(list.offsetHeight / 2.35, Math.min(list.offsetHeight / 1.04, list.offsetHeight * scrollProgress)) );
+        const center = (list.scrollTop + (lerp((list.offsetHeight / 3), list.offsetHeight / 1.02, scrollProgress)) );
         for (let item of list.children) {
             const relativePos = center - ((item as HTMLElement).offsetTop + (item as HTMLElement).offsetHeight / 2);
-            const scale = Math.max(0.5, 1 - Math.abs(relativePos) / 3000);
+            const scale = Math.max(0.5, 1 - Math.abs(relativePos) / 5000);
             (item as HTMLElement).style.transform = `scale(${scale})`;
             (item as HTMLElement).style.marginTop = `-${(item as HTMLElement).offsetHeight * (1 - scale)}px`; 
         }
@@ -65,6 +69,15 @@
     <meta name="description" content="Alexander Akira Weimer Developer Portfolio">
     <meta name="keywords" content="Weimer, Alexander, AlexanderAkiraWeimer">
     <meta name="author" content="Alexander Akira Weimer">
+    <meta name="copyright" content="Alexander Weimer" />
+    <meta property="og:site_name" content="Alexander Akira Weimer Developer Portfolio" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:profile:first_name" content="Alexander" />
+    <meta property="og:profile:last_name" content="Weimer" />
+    <meta property="og:profile:username" content="syslev" />
+    <meta property="og:profile:gender" content="male" />
+
+    <meta property="fb:admins" content="268094773018996" />
 </svelte:head>
 
 <main class="justify-between items-center l-0">

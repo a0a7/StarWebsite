@@ -6,10 +6,22 @@
     import { parse } from 'yaml'
     import { onMount } from 'svelte';
 
-    let projects: any
-    let publications: any
-    let statistics: any
+    let projects: any;
+    let publications: any;
+    let loaded: boolean = false;
+    let statistics: any;
     let list: HTMLElement;
+       
+    const resizeAfterScroll = () => {
+        const scrollProgress = (list.scrollTop / (list.scrollHeight - list.offsetHeight)) ?? 0;
+        const center = (list.scrollTop + Math.max(list.offsetHeight / 2.35, Math.min(list.offsetHeight / 1.04, list.offsetHeight * scrollProgress)) );
+        for (let item of list.children) {
+            const relativePos = center - ((item as HTMLElement).offsetTop + (item as HTMLElement).offsetHeight / 2);
+            const scale = Math.max(0.5, 1 - Math.abs(relativePos) / 3000);
+            (item as HTMLElement).style.transform = `scale(${scale})`;
+            (item as HTMLElement).style.marginTop = `-${(item as HTMLElement).offsetHeight * (1 - scale)}px`; 
+        }
+    };
 
     onMount(async () => {
         fetch('projects.yml')
@@ -32,17 +44,13 @@
             });
     });
 
-    onMount(() => {
-        list.addEventListener('scroll', () => {
-            const scrollProgress = list.scrollTop / (list.scrollHeight - list.offsetHeight);
-            const center = (list.scrollTop + Math.max(list.offsetHeight / 2.35, Math.min(list.offsetHeight / 1.04, list.offsetHeight * scrollProgress)) );
-            for (let item of list.children) {
-            const relativePos = center - ((item as HTMLElement).offsetTop + (item as HTMLElement).offsetHeight / 2);
-            const minScale = Math.max(0.5, 1 - Math.abs(relativePos) / 3500);
-            (item as HTMLElement).style.transform = `scale(${minScale})`;
-            }
-        });
-        });
+    onMount(async () => {
+        list.addEventListener('scroll', resizeAfterScroll);
+        setTimeout(() => {
+            resizeAfterScroll();
+            loaded = true;
+        }, 150);
+    })
 
     enum Pages {
         profile,
@@ -74,7 +82,7 @@
                     />
                 </button>-->
         </span>
-        <div class="overflow-y-scroll overflow-x-show px-5 my-8 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex" bind:this={list}>
+        <div class="overflow-y-scroll overflow-x-show px-5 my-8 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex {loaded == true ? '' : 'invisible'}" bind:this={list}>
             {#if currentPage === Pages.profile}
                     {#if statistics}
                         {#each Object.entries(statistics) as [key, stats]}

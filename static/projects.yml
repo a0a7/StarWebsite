@@ -45,7 +45,7 @@ portfolio_website:
     This website
 
 dynamic_village_mod:
-  name: "Create: Dynamic Village"
+  name: "Dynamic Village"
   github: aesefficio/DynamicVillageMod
   modrinth_url: https://modrinth.com/mod/dynamic-village
   curseforge_url: https://www.curseforge.com/minecraft/mc-mods/dynamic-village
@@ -88,7 +88,7 @@ interiors_mod:
 
     
 bells_and_whistles_mod:
-  name: "Bells and Whistles Mod"
+  name: "Bells & Whistles"
   github: aesefficio/BellsAndWhistlesMod
   modrinth_url: https://modrinth.com/mod/bellsandwhistles
   modrinth_id: gJ5afkVv
@@ -108,8 +108,8 @@ strava_card:
   name: Strava Stats Card Generator
   github: syslev/StravaStatsCard
   url: https://stravacard.pages.dev 
-  start_date: 2023-04-16
-  end_date: 2023-04-16
+  start_date: 2023-08-16
+  end_date: 2023-08-16
   technologies:
     - Javascript
     - HTML
@@ -130,7 +130,7 @@ strava_map:
     - HTML
     - CSS
   description: |
-    A mobile-friendly web app to map Strava activities built with customization in mind. 
+    A simple & efficient web app to map Strava activities. 
 
 signboard_generator:
   name: Signboard Generator
@@ -143,4 +143,4 @@ signboard_generator:
     - HTML
     - CSS
   description: |
-    A simple webtoy to make images in the style of roadside signboards.
+    A webtoy to make images in the style of roadside signboards.

@@ -1,30 +1,25 @@
 <script lang="ts">
+	  import LinkIcon from './LinkIcon.svelte';
     import AbstractCard from './AbstractCard.svelte';
     export let project: any
 </script>
 
 <AbstractCard>
   <svelte:fragment slot="title">
-    <a href={`https://github.com/${project.github}`} target="_blank" class="text-white color-white linktext inline">
+    <a href={project.github ? `https://github.com/${project.github}` : project.web_url ?? '#'} target="_blank" class="text-white color-white linktext inline">
       {project.name} 
     </a>
-    <a href={`https://github.com/${project.github}`} target="_blank" class="color-white inline">
-      <img src="img/logos/github.svg" alt="Github Icon" class="w-5 linkicon inline">
-    </a>
+    {#if project.github}
+      <LinkIcon type="github" project={project} />
+    {/if}
     {#if project.modrinth_url}
-      <a href="{project.modrinth_url}" target="_blank" class="color-white">
-        <img src="img/logos/modrinth.svg" alt="Modrinth Icon" class="w-5 linkicon inline">
-      </a>
+      <LinkIcon type="modrinth" project={project} />
     {/if}
     {#if project.curseforge_url}
-    <a href="{project.curseforge_url}" target="_blank" class="color-white w-8">
-      <img src="img/logos/curseforge.svg" alt="Curseforge Icon" class="w-5 linkicon inline">
-    </a>
+      <LinkIcon type="curseforge" project={project} />
     {/if}
     {#if project.url}
-      <a href="{project.url}" target="_blank" class="color-white">
-        <img src="img/logos/web.svg" alt="Web Icon" class="w-5 linkicon inline">
-      </a>
+      <LinkIcon type="web" project={project} />
     {/if}
   </svelte:fragment>
   <svelte:fragment slot="date">

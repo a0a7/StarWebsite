@@ -85,7 +85,11 @@
         <h1 class="transform scale-0">Alexander Weimer - Portfolio</h1> <!-- SEO -->
         <span class="w-full text-center justify-center flex items-center md:text-center font-bold font-mastery text-fuchsia-50">
 
-            <h2 class="text-5xl md:text-6xl inline ml-[32px] text-center w-[387px] md:w-[484px]">{Pages[currentPage]}</h2>
+            <!--<h2 class="text-[2.5rem] md:text-6xl inline md:ml-[16px] text-center w-[387px] md:w-[484px]">links</h2>-->
+        </span>
+        <span class="w-full text-center justify-center flex items-center md:text-center font-bold font-mastery text-fuchsia-50">
+
+            <h2 class="text-[2.5rem] md:text-6xl inline md:ml-[16px] text-center w-[387px] md:w-[484px]">{Pages[currentPage]}</h2>
                 <!--<button type="button" 
                     on:click={() => {currentPage = (currentPage + 1) % (Object.keys(Pages).length / 2); console.log(currentPage)}}
                 >
@@ -95,22 +99,49 @@
                     />
                 </button>-->
         </span>
-        <div class="overflow-y-scroll overflow-x-show px-5 my-8 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex {loaded == true ? '' : 'invisible'}" bind:this={list}>
-            {#if currentPage === Pages.profile}
-                    {#if statistics}
-                        {#each Object.entries(statistics) as [key, stats]}
-                        <div><StatsCard {stats} /></div>
-                        {/each}
-                    {/if}
-            {:else if currentPage === Pages.projects}
-                    {#if projects}
-                        {#each Object.entries(projects) as [key, project]}
-                            <div><ProjectCard {project} /></div>
-                        {/each}
-                    {/if}
-            {:else}
-                <p class="text-2xl w-full text-center text-white font-bold font-varela">You're not supposed to see this. Reload the page and it should go away.</p>
-            {/if}
+        <div class="list inline-block flex-1 flex-col flex w-full overflow-y-scroll my-4 md:my-8">
+            <div class="overflow-y-scroll overflow-x-show px-5 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex {loaded == true ? '' : 'invisible'}" bind:this={list}>
+                {#if currentPage === Pages.profile}
+                        {#if statistics}
+                            {#each Object.entries(statistics) as [key, stats]}
+                            <div><StatsCard {stats} /></div>
+                            {/each}
+                        {/if}
+                {:else if currentPage === Pages.projects}
+                        {#if projects}
+                            {#each Object.entries(projects) as [key, project]}
+                                <div><ProjectCard {project} /></div>
+                            {/each}
+                        {/if}
+                {:else}
+                    <p class="text-2xl w-full text-center text-white font-bold font-varela">You're not supposed to see this. Reload the page and it should go away.</p>
+                {/if}
+            </div>
         </div>
     </div>
 </main>
+
+<style>
+.list {
+    position: relative;
+}
+
+.list::before,
+.list::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 30px; /* Adjust this value to change the size of the blur */
+    z-index: 1;
+}
+
+.list::before {
+    top: 0;
+    background: linear-gradient(to bottom, rgb(9,0,13), rgba(255,255,255,0));
+}
+
+.list::after {
+    bottom: 0;
+    background: linear-gradient(to top, rgb(9,0,13), rgba(255,255,255,0));
+}
+</style>

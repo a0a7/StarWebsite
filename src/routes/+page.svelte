@@ -88,7 +88,7 @@
     <meta property="og:profile:last_name" content="Weimer" />
     <meta property="og:profile:username" content="syslev" />
     <meta property="og:profile:gender" content="male" />
-    <meta property="og:image" content="img/pfp.png" />
+    <meta property="og:image" content="/img/pfp.png" />
 
     <meta property="fb:admins" content="268094773018996" />
 </svelte:head>

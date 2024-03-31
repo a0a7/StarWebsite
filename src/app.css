@@ -57,6 +57,8 @@ html, body {
     opacity: 0.8;
 }
 
+.tooltip-social,
+.tooltip-discord,
 .tooltip {
     position: relative;
     text-align: center;
@@ -82,11 +84,56 @@ html, body {
     align-self: center;
     white-space: nowrap;
     display:none;
+    font-family: VarelaRound;
 }
-
+.tooltip-social:hover:before,
+.tooltip-discord:hover:before,
 .tooltip:hover:before {
     display:block;
 }
+
+.tooltip-social:before {
+    content: attr(data-text);
+    position: absolute;
+
+    top: -70%;
+    transform: translateX(-22%);
+
+    padding: 2px 5px 2px 5px;
+    border-radius: 4px;
+    background:#09000d;
+    opacity: 0.95;
+    color: #fff;
+
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    white-space: nowrap;
+    display:none;
+    font-family: VarelaRound;
+}
+
+.tooltip-discord:before {
+    content: attr(data-text);
+    position: absolute;
+
+    top: -50%;
+    transform: translateX(-12%);
+
+    padding: 2px 5px 2px 5px;
+    border-radius: 4px;
+    background:#09000d;
+    opacity: 0.95;
+    color: #fff;
+
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    white-space: nowrap;
+    display:none;
+    font-family: VarelaRound;
+}
+
 
 ::selection {
     background: #2d1c36;

@@ -28,6 +28,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"bits-ui": "^0.21.1",
+		"clsx": "^2.1.0",
+		"tailwind-merge": "^2.2.2",
 		"vanilla-tilt-svelte": "^1.0.4",
 		"yaml": "^2.3.4"
 	}

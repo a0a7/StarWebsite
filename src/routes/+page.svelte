@@ -4,21 +4,23 @@
     import StatsCard from "$lib/components/StatsCard.svelte";
 
     import { parse } from 'yaml'
-    import { onMount } from 'svelte';
+    import { onMount, onDestroy } from 'svelte';
 
     let projects: any;
     let publications: any;
     let loaded: boolean = false;
     let statistics: any;
     let list: HTMLElement;
+    let observer: MutationObserver;
 
     function lerp(start: number, end: number, t: number) {
+        console.log(start * (1 - t) + end * t)
         return start * (1 - t) + end * t;
     }
        
     const resizeAfterScroll = () => {
         const scrollProgress = (list.scrollTop / (list.scrollHeight - list.offsetHeight)) ?? 0;
-        const center = (list.scrollTop + (lerp((list.offsetHeight / 3), list.offsetHeight / 1.02, scrollProgress)) );
+        const center = (list.scrollTop + (lerp((list.offsetHeight / 5), (list.offsetHeight / 1.02), scrollProgress)) );
         for (let item of list.children) {
             const relativePos = center - ((item as HTMLElement).offsetTop + (item as HTMLElement).offsetHeight / 2);
             const scale = Math.max(0.5, 1 - Math.abs(relativePos) / 5000);
@@ -48,13 +50,25 @@
             });
     });
 
-    onMount(async () => {
+    onMount(() => {
         list.addEventListener('scroll', resizeAfterScroll);
-        setTimeout(() => {
-            resizeAfterScroll();
-            loaded = true;
-        }, 150);
-    })
+        observer = new MutationObserver((mutationsList) => {
+            for(let mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    resizeAfterScroll();
+                    loaded = true;
+                    observer.disconnect();
+                }
+            }
+        });
+        observer.observe(list, { childList: true });
+    });
+
+    onDestroy(() => {
+        if (observer) {
+            observer.disconnect();
+        }
+    });
 
     enum Pages {
         profile,
@@ -72,6 +86,7 @@
     <meta name="copyright" content="Alexander Weimer" />
     <meta property="og:site_name" content="Alexander Akira Weimer Developer Portfolio" />
     <meta property="og:type" content="profile" />
+    <meta property="og:image" content="Alexander" />
     <meta property="og:profile:first_name" content="Alexander" />
     <meta property="og:profile:last_name" content="Weimer" />
     <meta property="og:profile:username" content="syslev" />
@@ -81,7 +96,7 @@
 </svelte:head>
 
 <main class="justify-between items-center l-0">
-    <div class="flex flex-col h-[100vh] px-5 pt-4 w-full">
+    <div class="flex flex-col h-[100vh] pt-4 w-full">
         <h1 class="transform scale-0">Alexander Weimer - Portfolio</h1> <!-- SEO -->
         <span class="w-full text-center justify-center flex items-center md:text-center font-bold font-mastery text-fuchsia-50">
 
@@ -100,7 +115,7 @@
                 </button>-->
         </span>
         <div class="list inline-block flex-1 flex-col flex w-full overflow-y-scroll my-4 md:my-8">
-            <div class="overflow-y-scroll overflow-x-show px-5 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex {loaded == true ? '' : 'invisible'}" bind:this={list}>
+            <div class="overflow-y-scroll overflow-x-show px-5 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex pb-10 {loaded == true ? '' : 'invisible'}" bind:this={list}>
                 {#if currentPage === Pages.profile}
                         {#if statistics}
                             {#each Object.entries(statistics) as [key, stats]}

@@ -78,17 +78,17 @@
 
 <svelte:head>
     <title>Alexander Weimer</title> 
-    <meta name="description" content="Alexander Akira Weimer Developer Portfolio">
+    <meta name="description" content="Alexander Akira Weimer">
     <meta name="keywords" content="Weimer, Alexander, AlexanderAkiraWeimer">
     <meta name="author" content="Alexander Akira Weimer">
-    <meta name="copyright" content="Alexander Weimer" />
-    <meta property="og:site_name" content="Alexander Akira Weimer Developer Portfolio" />
+    <meta name="copyright" content="Alexander Akira Weimer" />
+    <meta property="og:site_name" content="Alexander Akira Weimer" />
     <meta property="og:type" content="profile" />
-    <meta property="og:image" content="Alexander" />
     <meta property="og:profile:first_name" content="Alexander" />
     <meta property="og:profile:last_name" content="Weimer" />
     <meta property="og:profile:username" content="syslev" />
     <meta property="og:profile:gender" content="male" />
+    <meta property="og:image" content="img/pfp.png" />
 
     <meta property="fb:admins" content="268094773018996" />
 </svelte:head>

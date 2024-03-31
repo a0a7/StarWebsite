@@ -14,7 +14,6 @@
     let observer: MutationObserver;
 
     function lerp(start: number, end: number, t: number) {
-        console.log(start * (1 - t) + end * t)
         return start * (1 - t) + end * t;
     }
        

@@ -3,7 +3,7 @@ svelte_strava_mapper:
   github: syslev/StravaMultiMapper
   url: "https://stravamap.pages.dev/"
   start_date: 2024-03-28
-  end_date: 2024-03-02
+  end_date: 2024-04-02
   technologies:
     - Svelte
     - Typescript
@@ -11,7 +11,7 @@ svelte_strava_mapper:
     - MapLibre
     - OAuth2
   description: |
-    An ultra-fast, ultra-free, and ultra-customizable Strava heatmap tool.
+    An ultra-fast and ultra-customizable Strava heatmap tool.
 
 transit_cards_map:
   name: Transit Fare Card Map
@@ -34,7 +34,7 @@ portfolio_website:
   modrinth_id:
   curseforge_url:
   curseforge_id:
-  url: 
+  url:
   start_date: 2024-02-16
   end_date: 2024-02-16
   technologies:
@@ -85,7 +85,6 @@ interiors_mod:
     - Blockbench
   description: |
     Minecraft mod that expands interior decoration for the Create mod.
-
     
 bells_and_whistles_mod:
   name: "Bells & Whistles"

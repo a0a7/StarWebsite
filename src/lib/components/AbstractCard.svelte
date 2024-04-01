@@ -15,7 +15,7 @@
     gyroscope: true,
   }}
 >
-  <h2 class="text-xl text-bold text-fuchsia-50 font-varela">
+  <h2 class="text-l md:text-xl text-bold text-fuchsia-50 font-varela">
     <slot name="title" />
   </h2>
   <p class="text-sm text-fuchsia-50 font-varela opacity-85">

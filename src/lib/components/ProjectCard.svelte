@@ -6,7 +6,7 @@
 
 <AbstractCard>
   <svelte:fragment slot="title">
-    <a href={project.github ? `https://github.com/${project.github}` : project.web_url ?? '#'} target="_blank" class="text-white color-white linktext inline">
+    <a href={project.github ? `https://github.com/${project.github}` : project.web_url ?? '#'} target="_blank" class="text-white color-white inline">
       {project.name} 
     </a>
     {#if project.github}

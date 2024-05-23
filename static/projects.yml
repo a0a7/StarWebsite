@@ -58,11 +58,6 @@ transit_cards_map:
 portfolio_website:
   name: Portfolio Website
   github: syslev/StarWebsite
-  modrinth_url: 
-  modrinth_id:
-  curseforge_url:
-  curseforge_id:
-  url:
   start_date: 2024-02-16
   end_date: 2024-02-16
   technologies:
@@ -70,7 +65,7 @@ portfolio_website:
     - Typescript
     - Tailwind
   description: |
-    This website
+    This website.
 
 dynamic_village_mod:
   name: "Dynamic Village"

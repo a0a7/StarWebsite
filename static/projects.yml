@@ -1,3 +1,31 @@
+kana_quiz:
+  name: Kana Trainer
+  github: syslev/KanaQuiz
+  url: "https://kanaquiz.pages.dev/"
+  start_date: 2024-05-28
+  end_date: 2024-05-02
+  technologies:
+    - Svelte
+    - Typescript
+    - Tailwind
+  description: |
+    Feature-rich, beautiful and customziable kana trainer.
+
+svelte_strava_visualizer:
+  name: strava.tools
+  github: syslev/strava.tools
+  url: "https://strava-tools.pages.dev/"
+  start_date: 2024-04-28
+  end_date: 2024-04-02
+  technologies:
+    - Svelte
+    - Typescript
+    - Tailwind
+    - OAuth2
+    - ObservablePlot
+  description: |
+    A collection of chart-based Strava data analysis tools.
+
 svelte_strava_mapper:
   name: Svelte Multi-Activity Heatmap
   github: syslev/StravaMultiMapper

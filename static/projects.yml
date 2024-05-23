@@ -11,19 +11,6 @@ kana_quiz:
   description: |
     Feature-rich, beautiful and customziable kana trainer.
 
-aes_rip_website:
-  name: Aes Efficio Website
-  github: aesefficio/website
-  url: "https://aes.rip/"
-  start_date: 2024-04-28
-  end_date: 2024-04-02
-  technologies:
-    - Svelte
-    - Typescript
-    - Tailwind
-  description: |
-    The website for Aes Efficio.
-
 svelte_strava_visualizer:
   name: strava.tools
   github: syslev/strava.tools

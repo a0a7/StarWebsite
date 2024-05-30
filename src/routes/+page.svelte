@@ -125,8 +125,8 @@
                     />
                 </button>-->
         </span>
-        <div class="list inline-block flex-1 flex-col flex w-full overflow-y-scroll my-4 md:my-8">
-            <div class="overflow-y-scroll overflow-x-show px-5 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex pb-10 {loaded == true ? '' : 'invisible'}" bind:this={list}>
+        <div class="list inline-block flex-1 md:flex-2 flex-col flex w-full overflow-y-scroll my-4 md:my-8">
+            <div class="overflow-y-scroll overflow-x-show px-5 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex md:grid md:gap-x-5 md:justify-stretch md:grid-cols-2 pb-10 {loaded == true ? '' : 'invisible'}" bind:this={list}>
                 {#if currentPage === Pages.profile}
                         {#if statistics}
                             {#each Object.entries(statistics) as [key, stats]}

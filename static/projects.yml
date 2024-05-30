@@ -1,3 +1,14 @@
+contain_alibaba:
+  name: Alibaba Container
+  github: syslev/contain-alibaba
+  firefox_url: "https://addons.mozilla.org/en-US/firefox/addon/contain-alibaba/"
+  start_date: 2024-05-28
+  end_date: 2024-05-02
+  technologies:
+    - Javascript
+  description: |
+    Browser addon to limit tracking from Alibaba Group
+
 kana_quiz:
   name: Kana Trainer
   github: syslev/KanaQuiz
@@ -9,7 +20,7 @@ kana_quiz:
     - Typescript
     - Tailwind
   description: |
-    Feature-rich, beautiful and customziable kana trainer.
+    Feature-rich and customziable kana practice website.
 
 svelte_strava_visualizer:
   name: strava.tools
@@ -24,7 +35,7 @@ svelte_strava_visualizer:
     - OAuth2
     - ObservablePlot
   description: |
-    A collection of chart-based Strava data analysis tools.
+    Collection of chart-based Strava data analysis tools.
 
 svelte_strava_mapper:
   name: Svelte Multi-Activity Heatmap
@@ -39,7 +50,7 @@ svelte_strava_mapper:
     - MapLibre
     - OAuth2
   description: |
-    An ultra-fast and ultra-customizable Strava heatmap tool.
+    Ultra-fast and ultra-customizable Strava heatmap tool.
 
 transit_cards_map:
   name: Transit Fare Card Map
@@ -53,7 +64,7 @@ transit_cards_map:
     - Tailwind
     - MapLibre
   description: |
-    A visual database of transit fare cards from around the world
+    Visual database of transit fare cards from around the world
 
 portfolio_website:
   name: Portfolio Website
@@ -79,7 +90,7 @@ dynamic_village_mod:
     - Java
     - Gradle
   description: |
-    Minecraft mod that expands villages to fit with the Create mod.
+    Mod that expands villages & villagers to fit with the Create mod.
 
 plackard_generator:
   name: Name Plackard Generator
@@ -92,7 +103,7 @@ plackard_generator:
     - HTML
     - CSS
   description: |
-    Online tool to design visually appealing Congressional Debate plackards.
+    Tool to design appealing name plackards.
 
 interiors_mod:
   name: "Create: Interiors"
@@ -107,7 +118,7 @@ interiors_mod:
     - Gradle
     - Blockbench
   description: |
-    Minecraft mod that expands interior decoration for the Create mod.
+    Mod that expands decoration for the Create mod.
     
 bells_and_whistles_mod:
   name: "Bells & Whistles"
@@ -116,7 +127,6 @@ bells_and_whistles_mod:
   modrinth_id: gJ5afkVv
   curseforge_url: https://www.curseforge.com/minecraft/mc-mods/bellsandwhistles
   curseforge_id: 905040
-  url:
   start_date: 2023-08-16
   end_date: 2023-11-16
   technologies:
@@ -124,7 +134,7 @@ bells_and_whistles_mod:
     - Gradle
     - Blockbench
   description: |
-    Minecraft mod that adds a variety of train-related blocks to the game.
+    Mod that's all about trains
 
 strava_card:
   name: Strava Stats Card Generator
@@ -137,7 +147,7 @@ strava_card:
     - HTML
     - CSS
   description: |
-    A tool to create a profile card displaying your Strava statistics. 
+    Tool to generate Strava profile cards showing cycling statistics. 
 
 strava_map:
   name: Strava Activity Mapper
@@ -152,7 +162,7 @@ strava_map:
     - HTML
     - CSS
   description: |
-    A simple & efficient web app to map Strava activities. 
+    Simple & efficient web app to map Strava activities. 
 
 signboard_generator:
   name: Signboard Generator
@@ -165,4 +175,4 @@ signboard_generator:
     - HTML
     - CSS
   description: |
-    A webtoy to make images in the style of roadside signboards.
+    Webtoy to make images in the style of roadside signboards.

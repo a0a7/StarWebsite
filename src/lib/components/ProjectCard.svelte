@@ -18,6 +18,9 @@
     {#if project.curseforge_url}
       <LinkIcon type="curseforge" project={project} />
     {/if}
+    {#if project.firefox_url}
+      <LinkIcon type="firefox" project={project} />
+    {/if}
     {#if project.url}
       <LinkIcon type="web" project={project} />
     {/if}

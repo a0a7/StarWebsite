@@ -77,7 +77,7 @@
 </script>
 
 <svelte:head>
-    <title>Alexander Weimer</title> 
+    <title>a0a7 - Alexander Weimer</title> 
     <meta name="description" content="Alexander Akira Weimer">
     <meta name="keywords" content="Weimer, Alexander, AlexanderAkiraWeimer">
     <meta name="author" content="Alexander Akira Weimer">

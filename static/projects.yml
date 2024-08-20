@@ -1,6 +1,6 @@
 contain_alibaba:
   name: Alibaba Container
-  github: syslev/contain-alibaba
+  github: a0a7/contain-alibaba
   firefox_url: "https://addons.mozilla.org/en-US/firefox/addon/contain-alibaba/"
   start_date: 2024-05-28
   end_date: 2024-05-02
@@ -11,7 +11,7 @@ contain_alibaba:
 
 kana_quiz:
   name: Kana Trainer
-  github: syslev/KanaQuiz
+  github: a0a7/KanaQuiz
   url: "https://kanaquiz.pages.dev/"
   start_date: 2024-05-28
   end_date: 2024-05-02
@@ -24,7 +24,7 @@ kana_quiz:
 
 svelte_strava_visualizer:
   name: strava.tools
-  github: syslev/strava.tools
+  github: a0a7/strava.tools
   url: "https://strava-tools.pages.dev/"
   start_date: 2024-04-28
   end_date: 2024-04-02
@@ -39,7 +39,7 @@ svelte_strava_visualizer:
 
 svelte_strava_mapper:
   name: Svelte Multi-Activity Heatmap
-  github: syslev/StravaMultiMapper
+  github: a0a7/StravaMultiMapper
   url: "https://stravamap.pages.dev/"
   start_date: 2024-03-28
   end_date: 2024-04-02
@@ -50,11 +50,11 @@ svelte_strava_mapper:
     - MapLibre
     - OAuth2
   description: |
-    Ultra-fast and ultra-customizable Strava heatmap tool.
+    Ultra-fast and ultra-customizable Strava heatmap tool. 
 
 transit_cards_map:
   name: Transit Fare Card Map
-  github: syslev/TransitCardsMap
+  github: a0a7/TransitCardsMap
   url: "https://transitcards.pages.dev/"
   start_date: 2024-02-28
   end_date: 2024-03-29
@@ -68,7 +68,7 @@ transit_cards_map:
 
 portfolio_website:
   name: Portfolio Website
-  github: syslev/StarWebsite
+  github: a0a7/StarWebsite
   start_date: 2024-02-16
   end_date: 2024-02-16
   technologies:
@@ -90,11 +90,11 @@ dynamic_village_mod:
     - Java
     - Gradle
   description: |
-    Mod that expands villages & villagers to fit with the Create mod.
+    Total downloads >1,500,000
 
 plackard_generator:
   name: Name Plackard Generator
-  github: syslev/PlackardGenerator
+  github: a0a7/PlackardGenerator
   url: https://plackards.pages.dev
   start_date: 2023-09-16
   end_date: 2023-12-16
@@ -103,7 +103,7 @@ plackard_generator:
     - HTML
     - CSS
   description: |
-    Tool to design appealing name plackards.
+    Design tool for appealing name plackards.
 
 interiors_mod:
   name: "Create: Interiors"
@@ -118,7 +118,7 @@ interiors_mod:
     - Gradle
     - Blockbench
   description: |
-    Mod that expands decoration for the Create mod.
+    Total downloads >3,500,000
     
 bells_and_whistles_mod:
   name: "Bells & Whistles"
@@ -134,11 +134,11 @@ bells_and_whistles_mod:
     - Gradle
     - Blockbench
   description: |
-    Mod that's all about trains
+    Total downloads >4,000,000 
 
 strava_card:
   name: Strava Stats Card Generator
-  github: syslev/StravaStatsCard
+  github: a0a7/StravaStatsCard
   url: https://stravacard.pages.dev 
   start_date: 2023-08-16
   end_date: 2023-08-16
@@ -151,8 +151,8 @@ strava_card:
 
 strava_map:
   name: Strava Activity Mapper
-  github: syslev/StravaMapper
-  url: https://syslev.github.io/StravaMapper/ 
+  github: a0a7/StravaMapper
+  url: https://a0a7.github.io/StravaMapper/ 
   start_date: 2023-04-16
   end_date: 2023-04-16
   technologies:
@@ -166,8 +166,8 @@ strava_map:
 
 signboard_generator:
   name: Signboard Generator
-  github: syslev/Signboard
-  url: https://syslev.github.io/signboard/
+  github: a0a7/Signboard
+  url: https://a0a7.github.io/Signboard/
   start_date: 2023-03-16
   end_date: 2023-04-16
   technologies:

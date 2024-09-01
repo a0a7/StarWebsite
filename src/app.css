@@ -150,5 +150,10 @@ html, body {
         font-family:'VarelaRound';
         src: url(/font/VarelaRound.ttf) format('truetype');
         font-display: swap;
-    }    
+    }  
+    @font-face {
+        font-family:'Michael';
+        src: url(/font/michael.otf) format('opentype');
+        font-display: swap;
+    }     
 }

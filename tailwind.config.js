@@ -6,6 +6,7 @@ export default {
       fontFamily: {
         mastery: ['"AffiliateMastery"', "serif"],
         varela: ['"VarelaRound"', "sans-serif"],
+        michael: ['"Michael"', "sans-serif"],
       },
       scale: {
         '90': '0.9',

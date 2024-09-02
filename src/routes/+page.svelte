@@ -113,7 +113,7 @@
             <div class="text-fuchsia-50">———</div>
             <a class="hover:opacity-80" href="openpgp4fpr:422c4cc0cebb122f9efe3b55e9443ee1e32b173a" target="_blank" rel="noopener noreferrer">
                 <span>
-                    OpenPGP:&nbsp;422C&nbsp;4CC0&nbsp;CEBB&nbsp;122F&nbsp;9EFE  3B55&nbsp;E944&nbsp;3EE1&nbsp;E32B&nbsp;173A
+                    OpenPGP:&nbsp;422C&nbsp;4CC0&nbsp;CEBB&nbsp;122F&nbsp;9EFE<br>3B55&nbsp;E944&nbsp;3EE1&nbsp;E32B&nbsp;173A
                 </span>
             </a>
             <div class="text-fuchsia-50">———</div>

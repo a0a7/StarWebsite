@@ -77,8 +77,8 @@
 </script>
 
 <svelte:head>
-    <title>a0a7</title> 
-    <meta name="description" content="a0a7 website">
+    <title>lev</title> 
+    <meta name="description" content="Mm">
     <meta name="keywords" content="a0a7, a0ax, lev">
     <meta name="author" content="a0a7">
     <meta name="copyright" content="a0a7" />
@@ -86,7 +86,7 @@
     <meta property="og:type" content="profile" />
     <meta property="og:profile:first_name" content="a0a7" />
     <meta property="og:profile:username" content="a0a7" />
-    <meta property="og:image" content="/img/pfp.png" /> 
+    <!--<meta property="og:image" content="/img/pfp.png" /> -->
     <meta property="fb:admins" content="268094773018996" />
 </svelte:head>
 

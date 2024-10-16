@@ -1,4 +1,4 @@
-contain_alibaba:
+grain_filter:
   name: Grain Filter
   github: a0a7/GrainFilter
   firefox_url: "https://classicanime.pages.dev/"

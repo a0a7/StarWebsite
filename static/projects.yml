@@ -1,4 +1,17 @@
 contain_alibaba:
+  name: Grain Filter
+  github: a0a7/GrainFilter
+  firefox_url: "https://classicanime.pages.dev/"
+  start_date: 2024-10-28
+  end_date: 2024-10-02
+  technologies:
+    - Svelte
+    - Typescript
+    - Tailwind
+  description: |
+    Browser addon to limit tracking from Alibaba Group
+
+contain_alibaba:
   name: Alibaba Container
   github: a0a7/contain-alibaba
   firefox_url: "https://addons.mozilla.org/en-US/firefox/addon/contain-alibaba/"
@@ -7,7 +20,7 @@ contain_alibaba:
   technologies:
     - Javascript
   description: |
-    Browser addon to limit tracking from Alibaba Group
+    Webtoy w/ API to add a 90s-anime-style grain effect to an image.
 
 kana_quiz:
   name: Kana Trainer

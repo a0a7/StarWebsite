@@ -9,8 +9,8 @@ grain_filter:
     - Typescript
     - Tailwind
   description: |
-    Browser addon to limit tracking from Alibaba Group
-
+    Webtoy + API to add a 90s-style grain effect to an image.
+    
 contain_alibaba:
   name: Alibaba Container
   github: a0a7/contain-alibaba
@@ -20,7 +20,7 @@ contain_alibaba:
   technologies:
     - Javascript
   description: |
-    Webtoy w/ API to add a 90s-anime-style grain effect to an image.
+    Browser addon to limit tracking from Alibaba Group.
 
 kana_quiz:
   name: Kana Trainer

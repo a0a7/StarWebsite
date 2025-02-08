@@ -19,9 +19,8 @@ gregg_recognition:
   technologies:
     - PyTorch 
     - Python
-    - Pillow
   description: |
-    Machine learning model for scanning of the Gregg family of shorthand scripts
+    Machine learning model to read the Gregg family of shorthand scripts
 
 grain_filter:
   name: Grain Filter

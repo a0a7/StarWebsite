@@ -1,7 +1,32 @@
+muscles_ooo:
+  name: muscles.ooo
+  github: a0a7/GymStats
+  url: "https://garminstats.pages.dev/"
+  start_date: 2025-01-28
+  end_date: 2025-02-02
+  technologies:
+    - Svelte
+    - Typescript 
+    - Tailwind
+  description: |
+    API application for analysis of workout & health data produced by the Garmin ecosystem of wearables.
+
+gregg_recognition:
+  name: GreggRecognition
+  github: a0a7/MelinRecognition/tree/main/GreggRecognition/src
+  start_date: 2024-09-28
+  end_date: 2025-02-02
+  technologies:
+    - PyTorch 
+    - Python
+    - Pillow
+  description: |
+    Machine learning model for scanning of the Gregg family of shorthand scripts
+
 grain_filter:
   name: Grain Filter
   github: a0a7/GrainFilter
-  firefox_url: "https://classicanime.pages.dev/"
+  url: "https://classicanime.pages.dev/"
   start_date: 2024-10-28
   end_date: 2024-10-02
   technologies:

@@ -108,7 +108,7 @@
         </span>-->
         <div class="pr-1 mx-auto w-full text-center justify-center flex flex-col items-center md:text-center font-bold font-varela text-fuchsia-50">
             <span>
-                lev &lt; aw [аt] a0 [dоt] ax &gt;
+                alexander weimer &lt; aw [аt] a0 [dоt] ax &gt;
             </span>
             <div class="text-fuchsia-50">———</div>
             <a class="hover:opacity-80" href="openpgp4fpr:422c4cc0cebb122f9efe3b55e9443ee1e32b173a" target="_blank" rel="noopener noreferrer">
@@ -163,7 +163,7 @@
                     />
                 </button>-->
         </span>
-        <!--<div class="list inline-block flex-1 md:flex-2 flex-col flex w-full overflow-y-scroll my-4 md:mb-8 md:mt-4">
+        <div class="list inline-block flex-1 md:flex-2 flex-col flex w-full overflow-y-scroll my-4 md:mb-8 md:mt-4">
             <div class="overflow-y-scroll overflow-x-show px-5 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex md:grid md:gap-x-5 md:justify-stretch md:grid-cols-2 pb-10 {loaded == true ? '' : 'invisible'}" bind:this={list}>
                 {#if currentPage === Pages.profile}
                         {#if statistics}
@@ -183,7 +183,7 @@
                     <p class="text-2xl w-full text-center text-white font-bold font-varela">You're not supposed to see this. Reload the page and it should go away.</p>
                 {/if}
             </div>
-        </div>-->
+        </div>
     </div>
 </main>
 

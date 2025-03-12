@@ -1,3 +1,18 @@
+create_addons_index:
+  name: Create Addons Index
+  github: a0a7/CreateAddonsIndex
+  url: "https://createaddons.com"
+  start_date: 2025-03-01
+  end_date: 2025-04-01
+  technologies:
+    - Svelte
+    - Typescript 
+    - Tailwind
+    - CloudflareWorkers
+    - NodeJS
+  description: |
+    Always-up-to-date online database of Create addons via nodejs scripts & serverless workers
+
 muscles_ooo:
   name: muscles.ooo
   github: a0a7/GymStats

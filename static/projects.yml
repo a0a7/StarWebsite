@@ -11,7 +11,7 @@ create_addons_index:
     - CloudflareWorkers
     - NodeJS
   description: |
-    Always-up-to-date online database of Create addons made with Cloudflare serverless workers, node scripts and calls to various APIs
+    Always-up-to-date online database of Create addons made with Cloudflare serverless workers and node scripts
 
 muscles_ooo:
   name: muscles.ooo

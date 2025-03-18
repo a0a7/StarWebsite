@@ -44,7 +44,7 @@
     <div slot="end" class="flex flex-row space-x-2 pt-2">
       {#each project.technologies as tag}
         <span class="pr-1 tooltip font-varela" data-text="{tag}">
-          <img class="w-6 whiteicon"
+          <img class="w-6 {tag!=="cloudflareworkers"?'whiteicon':''}"
             src="{`img/logos/${tag.split(' ')[0].toLowerCase().replace(/[ .]/g, '')}.svg`}"
             alt="{tag} icon"
           >

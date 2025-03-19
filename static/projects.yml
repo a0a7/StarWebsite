@@ -35,7 +35,7 @@ gregg_recognition:
     - PyTorch 
     - Python
   description: |
-    Machine learning model to read the Gregg family of shorthand scripts
+    Machine learning model to read the Gregg shorthand script
 
 grain_filter:
   name: Grain Filter

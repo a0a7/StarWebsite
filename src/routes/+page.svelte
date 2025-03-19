@@ -101,12 +101,12 @@
                 <svg width="53px" height="53px" class="linkicon inline cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M524.5 69.8a1.5 1.5 0 0 0 -.8-.7A485.1 485.1 0 0 0 404.1 32a1.8 1.8 0 0 0 -1.9 .9 337.5 337.5 0 0 0 -14.9 30.6 447.8 447.8 0 0 0 -134.4 0 309.5 309.5 0 0 0 -15.1-30.6 1.9 1.9 0 0 0 -1.9-.9A483.7 483.7 0 0 0 116.1 69.1a1.7 1.7 0 0 0 -.8 .7C39.1 183.7 18.2 294.7 28.4 404.4a2 2 0 0 0 .8 1.4A487.7 487.7 0 0 0 176 479.9a1.9 1.9 0 0 0 2.1-.7A348.2 348.2 0 0 0 208.1 430.4a1.9 1.9 0 0 0 -1-2.6 321.2 321.2 0 0 1 -45.9-21.9 1.9 1.9 0 0 1 -.2-3.1c3.1-2.3 6.2-4.7 9.1-7.1a1.8 1.8 0 0 1 1.9-.3c96.2 43.9 200.4 43.9 295.5 0a1.8 1.8 0 0 1 1.9 .2c2.9 2.4 6 4.9 9.1 7.2a1.9 1.9 0 0 1 -.2 3.1 301.4 301.4 0 0 1 -45.9 21.8 1.9 1.9 0 0 0 -1 2.6 391.1 391.1 0 0 0 30 48.8 1.9 1.9 0 0 0 2.1 .7A486 486 0 0 0 610.7 405.7a1.9 1.9 0 0 0 .8-1.4C623.7 277.6 590.9 167.5 524.5 69.8zM222.5 337.6c-29 0-52.8-26.6-52.8-59.2S193.1 219.1 222.5 219.1c29.7 0 53.3 26.8 52.8 59.2C275.3 311 251.9 337.6 222.5 337.6zm195.4 0c-29 0-52.8-26.6-52.8-59.2S388.4 219.1 417.9 219.1c29.7 0 53.3 26.8 52.8 59.2C470.7 311 447.5 337.6 417.9 337.6z"/></svg>
             </a>
             <a class="ml-6 tooltip-social" data-text="@awa0a7" href="https://t.me/awa0a7" target="_blank" rel="noopener noreferrer">
-                <svg width="44px" height="44px" class="linkicon inline cursor-pointer" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="10 10 45 45">
+                <svg width="44px" height="44px" class="linkicon inline cursor-poipnter" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="10 10 45 45">
                     <path d="M32,10c12.15,0,22,9.85,22,22s-9.85,22-22,22s-22-9.85-22-22S19.85,10,32,10z M39.589,40.968	c0.404-1.241,2.301-13.615,2.534-16.054c0.071-0.738-0.163-1.229-0.619-1.449c-0.553-0.265-1.371-0.133-2.322,0.21	c-1.303,0.47-17.958,7.541-18.92,7.951c-0.912,0.388-1.775,0.81-1.775,1.423c0,0.431,0.256,0.673,0.96,0.924	c0.732,0.261,2.577,0.82,3.668,1.121c1.05,0.29,2.243,0.038,2.913-0.378c0.709-0.441,8.901-5.921,9.488-6.402	c0.587-0.48,1.056,0.135,0.576,0.616c-0.48,0.48-6.102,5.937-6.844,6.693c-0.901,0.917-0.262,1.868,0.343,2.249	c0.689,0.435,5.649,3.761,6.396,4.295c0.747,0.534,1.504,0.776,2.198,0.776C38.879,42.942,39.244,42.028,39.589,40.968z"></path>
                 </svg>
             </a>
         </span>-->
-        <div class="pr-1 mx-auto w-full text-center justify-center flex flex-col items-center md:text-center font-bold font-varela text-fuchsia-50">
+        <div class="overflow-x-hidden pr-1 mx-auto w-full text-center justify-center flex flex-col items-center md:text-center font-bold font-varela text-fuchsia-50">
             <span>
                 a0a7 &lt; aw [аt] a0 [dоt] ax &gt;
             </span>
@@ -163,8 +163,10 @@
                     />
                 </button>-->
         </span>
-        <div class="list inline-block flex-1 md:flex-2 flex-col flex w-full overflow-y-scroll my-4 md:mb-8 md:mt-4">
-            <div class="overflow-y-scroll overflow-x-show px-5 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex md:grid md:gap-x-5 md:justify-stretch md:grid-cols-2 pb-10 {loaded == true ? '' : 'invisible'}" bind:this={list}>
+            <div class="list overflow-x-hidden inline-block flex-1 md:flex-2 flex-col flex w-full overflow-y-scroll my-4 md:mb-8 md:mt-4">
+                <h2 class="-mb-[40px] z-10 overflow-x-hidden opacity-20 text-[5.5rem] transform scale-x-[115%] font-bold text-center font-mastery text-fuchsia-50 text-white bg-gradient-to-b from-fuchsia-50 to-transparent bg-clip-text text-transparent">projects</h2>
+
+                <div class=" overflow-y-scroll overflow-x-show px-5 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex md:grid md:gap-x-5 md:justify-stretch md:grid-cols-2 pb-10 {loaded == true ? '' : 'invisible'}" bind:this={list}>
                 {#if currentPage === Pages.profile}
                         {#if statistics}
                             {#each Object.entries(statistics) as [key, stats]}
@@ -202,7 +204,8 @@
 }
 
 .list::before {
-    top: 0;
+    translate: 0 90px;
+    top: 30;
     background: linear-gradient(to bottom, rgb(9,0,13), rgba(255,255,255,0));
 }
 

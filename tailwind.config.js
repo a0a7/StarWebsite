@@ -7,6 +7,7 @@ export default {
         mastery: ['"AffiliateMastery"', "serif"],
         varela: ['"VarelaRound"', "sans-serif"],
         michael: ['"Michael"', "sans-serif"],
+        shimponia: ['"Shimponia"', "serif"],
       },
       scale: {
         '90': '0.9',

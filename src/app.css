@@ -150,6 +150,11 @@ body {
         src: url(/font/AffiliateMasteryRegular.otf) format('opentype');
         font-display: swap;
     }
+    @font-face {
+        font-family:'Shimponia';
+        src: url(/font/shimponia.ttf) format('truetype');
+        font-display: swap;
+    }
     
     @font-face {
         font-family:'VarelaRound';

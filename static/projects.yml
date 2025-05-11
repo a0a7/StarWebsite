@@ -14,17 +14,17 @@ create_addons_index:
     Always-up-to-date online database of Create addons made with Cloudflare serverless workers and node scripts
 
 muscles_ooo:
-  name: muscles.ooo
+  name: garminstats
   github: a0a7/GymStats
   url: "https://garminstats.pages.dev/"
   start_date: 2025-01-28
-  end_date: 2025-02-02
+  end_date: 2025-05-02
   technologies:
     - Svelte
     - Typescript 
     - Tailwind
   description: |
-    API application for analysis of workout & health data produced by the Garmin ecosystem of wearables.
+    API application for analysis of workout & health data from Garmin watches.
 
 gregg_recognition:
   name: GreggRecognition
@@ -35,7 +35,7 @@ gregg_recognition:
     - PyTorch 
     - Python
   description: |
-    Machine learning model to read the Gregg shorthand script
+    GCNN for reading shorthand. Yearlong project for MTKA Research.
 
 grain_filter:
   name: Grain Filter
@@ -118,18 +118,6 @@ transit_cards_map:
   description: |
     Visual database of transit fare cards from around the world
 
-portfolio_website:
-  name: Portfolio Website
-  github: a0a7/StarWebsite
-  start_date: 2024-02-16
-  end_date: 2024-02-16
-  technologies:
-    - Svelte
-    - Typescript
-    - Tailwind
-  description: |
-    This website.
-
 dynamic_village_mod:
   name: "Dynamic Village"
   github: aesefficio/DynamicVillageMod
@@ -142,7 +130,7 @@ dynamic_village_mod:
     - Java
     - Gradle
   description: |
-    Total downloads >1,500,000
+    Cross-version NPC & structure-focused mod. Downloads > 3.5m.
 
 plackard_generator:
   name: Name Plackard Generator
@@ -155,7 +143,7 @@ plackard_generator:
     - HTML
     - CSS
   description: |
-    Design tool for appealing name plackards.
+    Design tool for appealing congressional Debate name plackards.
 
 interiors_mod:
   name: "Create: Interiors"
@@ -164,13 +152,13 @@ interiors_mod:
   curseforge_url: https://www.curseforge.com/minecraft/mc-mods/interiors
   url:
   start_date: 2023-08-16
-  end_date: 2023-11-16
+  end_date: 2024-12-16
   technologies:
     - Java
     - Gradle
     - Blockbench
   description: |
-    Total downloads >3,500,000
+    Multi-version, multi-loader Minecraft mod. Downloads > 8m.
     
 bells_and_whistles_mod:
   name: "Bells & Whistles"
@@ -180,13 +168,13 @@ bells_and_whistles_mod:
   curseforge_url: https://www.curseforge.com/minecraft/mc-mods/bellsandwhistles
   curseforge_id: 905040
   start_date: 2023-08-16
-  end_date: 2023-11-16
+  end_date: 2024-12-16
   technologies:
     - Java
     - Gradle
     - Blockbench
   description: |
-    Total downloads >4,000,000 
+    Multi-version, multi-loader Minecraft mod. Downloads > 8m.
 
 strava_card:
   name: Strava Stats Card Generator

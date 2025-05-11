@@ -163,9 +163,8 @@
                     />
                 </button>-->
         </span>
-            <div class="list overflow-x-hidden inline-block flex-1 md:flex-2 flex-col flex w-full overflow-y-scroll my-4 md:mb-8 md:mt-4">
-                <!--<h2 class="-mb-[40px] z-10 overflow-x-hidden opacity-20 text-[3.75rem] md:text-[5.5rem] transform scale-x-[115%] font-bold text-center font-mastery text-fuchsia-50 text-white bg-gradient-to-b from-fuchsia-50 to-transparent bg-clip-text text-transparent">projects</h2>-->
-
+            <div class="list overflow-x-hidden inline-block flex-1 md:flex-2 flex-col flex w-full overflow-y-hidden my-4 md:mb-8 md:mt-4">
+                <h2 class="-my-[16px] py-2 z-10 text-shadow overflow-x-hidden overflow-y-visible text-[2rem] md:text-[2.5rem]  text-center font-mastery text-fuchsia-50">projects</h2>
                 <div class=" overflow-y-scroll overflow-x-show px-5 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex md:grid md:gap-x-5 md:justify-stretch md:grid-cols-2 pb-10 {loaded == true ? '' : 'invisible'}" bind:this={list}>
                 {#if currentPage === Pages.profile}
                         {#if statistics}
@@ -176,9 +175,9 @@
                 {:else if currentPage === Pages.projects}
                         {#if projects}
                             {#each Object.entries(projects) as [key, project], index (key)}
-                                <div class:md:col-span-2={index === Object.entries(projects).length - 1 && Object.entries(projects).length % 2 !== 0} class:mx-auto={index === Object.entries(projects).length - 1 && Object.entries(projects).length % 2 !== 0}>
+                            <div class:md:col-span-2={index === Object.entries(projects).length - 1 && Object.entries(projects).length % 2 !== 0} class:mx-auto={index === Object.entries(projects).length - 1 && Object.entries(projects).length % 2 !== 0}>
                                     <ProjectCard {project} />
-                                </div>
+                            </div>
                             {/each}
                         {/if}
                 {:else}
@@ -204,7 +203,7 @@
 }
 
 .list::before {
-    translate: 0 90px;
+    translate: 0 40px;
     top: 30;
     background: linear-gradient(to bottom, rgb(9,0,13), rgba(255,255,255,0));
 }
@@ -217,6 +216,11 @@
 
 .list::after {
     bottom: 0;
+ 
     background: linear-gradient(to top, rgb(9,0,13), rgba(255,255,255,0));
+}
+
+.text-shadow {
+    text-shadow: 0px 4px 1px #09000d, 0px 6px 1px #09000d, 0px 8px 4px #09000d, 4px 4px 1px #09000d, -4px 4px 1px #09000d 
 }
 </style>

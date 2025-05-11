@@ -77,7 +77,6 @@
 </script>
 
 <svelte:head>
-    <title>lev</title> 
     <meta name="description" content="Mm">
     <meta name="keywords" content="a0a7, a0ax, lev">
     <meta name="author" content="a0a7">

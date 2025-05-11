@@ -88,6 +88,7 @@
     <meta property="og:profile:username" content="a0a7" />
     <!--<meta property="og:image" content="/img/pfp.png" /> -->
     <meta property="fb:admins" content="268094773018996" />
+    <meta name="theme-color" content="#09000d"/>
 </svelte:head>
 
 <main class="justify-between items-center l-0">

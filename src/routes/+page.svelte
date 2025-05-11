@@ -164,7 +164,7 @@
                 </button>-->
         </span>
             <div class="list overflow-x-hidden inline-block flex-1 md:flex-2 flex-col flex w-full overflow-y-scroll my-4 md:mb-8 md:mt-4">
-                <h2 class="-mb-[40px] z-10 overflow-x-hidden opacity-20 text-[3.75rem] md:text-[5.5rem] transform scale-x-[115%] font-bold text-center font-mastery text-fuchsia-50 text-white bg-gradient-to-b from-fuchsia-50 to-transparent bg-clip-text text-transparent">projects</h2>
+                <!--<h2 class="-mb-[40px] z-10 overflow-x-hidden opacity-20 text-[3.75rem] md:text-[5.5rem] transform scale-x-[115%] font-bold text-center font-mastery text-fuchsia-50 text-white bg-gradient-to-b from-fuchsia-50 to-transparent bg-clip-text text-transparent">projects</h2>-->
 
                 <div class=" overflow-y-scroll overflow-x-show px-5 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex md:grid md:gap-x-5 md:justify-stretch md:grid-cols-2 pb-10 {loaded == true ? '' : 'invisible'}" bind:this={list}>
                 {#if currentPage === Pages.profile}

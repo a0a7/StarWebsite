@@ -3,7 +3,7 @@
     import PublicationCard from "$lib/components/PublicationCard.svelte";
     import StatsCard from "$lib/components/StatsCard.svelte";
     import { parse } from 'yaml'
-    import { onMount, onDestroy } from 'svelte';
+    import { onMount, onDestroy, afterUpdate } from 'svelte';
 
     let projects: any;
     let publications: any;
@@ -48,7 +48,10 @@
             });
     });
 
-    onMount(() => {
+   onMount(() => {
+        // Defer initial resize to ensure DOM is rendered
+        setTimeout(() => resizeAfterScroll(), 1);
+
         list.addEventListener('scroll', resizeAfterScroll);
         observer = new MutationObserver((mutationsList) => {
             for(let mutation of mutationsList) {
@@ -60,8 +63,19 @@
             }
         });
         observer.observe(list, { childList: true });
-    });
 
+        // Re-run when tab becomes visible
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') {
+                resizeAfterScroll();
+            }
+        });
+    });
+    afterUpdate(() => {
+        if (list && ((currentPage === Pages.projects && projects) || (currentPage === Pages.profile && statistics))) {
+            resizeAfterScroll();
+        }
+    });
     onDestroy(() => {
         if (observer) {
             observer.disconnect();

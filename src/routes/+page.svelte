@@ -68,6 +68,7 @@
         document.addEventListener('visibilitychange', () => {
             if (document.visibilityState === 'visible') {
                 resizeAfterScroll();
+                console.debug('Page is visible');
             }
         });
     });

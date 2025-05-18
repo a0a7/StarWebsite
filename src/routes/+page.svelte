@@ -121,10 +121,18 @@
                 </svg>
             </a>
         </span>-->
-        <div class="overflow-x-hidden pr-1 mx-auto w-full text-center justify-center flex flex-col items-center md:text-center font-bold font-varela text-fuchsia-50">
-            <span>
-                a0a7 &lt; aw [аt] a0 [dоt] ax &gt;
-            </span>
+        <div class="overflow-x-hidden pr-1 mx-auto w-full text-center justify-center flex flex-col items-center md:text-center font-bold font-varela text-fuchsia-50 ">
+            <button
+                type="button"
+                class="hover:opacity-80 cursor-pointer select-all bg-transparent border-none p-0 m-0 font-inherit text-inherit"
+                on:click={() => {
+                    navigator.clipboard.writeText('aw@a0.ax');
+                }}
+                title="click to copy"
+                aria-label="Copy email address to clipboard"
+            >
+                a0a7 &lt; aw@a0.ax &gt;
+            </button>
             <div class="text-fuchsia-50">———</div>
             <a class="hover:opacity-80" href="openpgp4fpr:422c4cc0cebb122f9efe3b55e9443ee1e32b173a" target="_blank" rel="noopener noreferrer">
                 <span>

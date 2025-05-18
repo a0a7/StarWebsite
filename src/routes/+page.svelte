@@ -121,6 +121,23 @@
                 </svg>
             </a>
         </span>-->
+            <button
+                type="button"
+                class="fixed top-6 right-8 z-50 flex items-center gap-2 px-3 py-2 rounded-sm  text-fuchsia-50 text-lg font-bold font-varela transition-all duration-200 group select-none cursor-pointer bg-transparent border-none"
+                on:click={() => window.open(`https://blog.${window.location.hostname.replace(/^www\./, '')}`, '_blank')}
+                aria-label="Open archive blog in new tab"
+            >
+                <span class="transition-opacity duration-200 group-hover:opacity-80">archive</span>
+                <svg
+                    class="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="4.5"
+                    viewBox="0 0 24 24"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
         <div class="overflow-x-hidden pr-1 mx-auto w-full text-center justify-center flex flex-col items-center md:text-center font-bold font-varela text-fuchsia-50 ">
             <button
                 type="button"

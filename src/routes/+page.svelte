@@ -121,23 +121,24 @@
                 </svg>
             </a>
         </span>-->
-            <button
-                type="button"
-                class="fixed top-6 right-8 z-50 flex items-center gap-2 px-3 py-2 rounded-sm  text-fuchsia-50 text-lg font-bold font-varela transition-all duration-200 group select-none cursor-pointer bg-transparent border-none"
-                on:click={() => window.open(`https://blog.${window.location.hostname.replace(/^www\./, '')}`, '_blank')}
-                aria-label="Open archive blog in new tab"
+        <button
+            type="button"
+            class="fixed right-px top-[18px] md:top-6 md:right-8 z-50 flex items-center gap-2 pl-8 pr-6 pt-[6px] pb-[10px] rounded-[30px] text-[#e1d3e2] text-lg font-bold font-mastery transition-all duration-200 group select-none cursor-pointer shadow-lg outline-none"
+            style="backdrop-filter: blur(2px); background-image: url('/img/lines.png'); background-size: cover, cover; background-repeat: no-repeat, no-repeat;"
+            on:click={() => window.open(`https://about.${window.location.hostname.replace(/^www\./, '')}`, '_blank')}
+            aria-label="Open about me page in new tab"
+        >
+            <span class="transition-opacity duration-200 group-hover:opacity-80">a&#6158;bout</span> <!-- mongolian character joiner to make the a and b not be a digraph because that's hard to read without context -->
+            <svg
+                class="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="4.5"
+                viewBox="0 0 24 24"
             >
-                <span class="transition-opacity duration-200 group-hover:opacity-80">archive</span>
-                <svg
-                    class="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="4.5"
-                    viewBox="0 0 24 24"
-                >
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-                </svg>
-            </button>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+        </button>
         <div class="overflow-x-hidden pr-1 mx-auto w-full text-center justify-center flex flex-col items-center md:text-center font-bold font-varela text-fuchsia-50 ">
             <button
                 type="button"
@@ -203,7 +204,7 @@
                     />
                 </button>-->
         </span>
-            <div class="list overflow-x-hidden inline-block flex-1 md:flex-2 flex-col flex w-full overflow-y-hidden my-4 md:mb-8 md:mt-4">
+            <div class="list overflow-x-hidden inline-block flex-1 md:flex-2 flex-col flex w-full overflow-y-hidden mt-4 md:mb-8">
                 <h2 class="-my-[16px] py-2 z-10 text-shadow overflow-x-hidden overflow-y-visible text-[2rem] md:text-[2.5rem]  text-center font-mastery text-fuchsia-50">projects</h2>
                 <div class=" overflow-y-scroll overflow-x-show px-5 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex md:grid md:gap-x-5 md:justify-stretch md:grid-cols-2 pb-10 {loaded == true ? '' : 'invisible'}" bind:this={list}>
                 {#if currentPage === Pages.profile}

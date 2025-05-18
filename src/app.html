@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta name="theme-color" content="#09000d"/>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="theme-color" content="#09000d"/>
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover" class="bg-[#09000d]">
-		<div style="display: contents" class="">%sveltekit.body%</div>
-	</body>
+    <head>
+        <meta name="theme-color" content="#010401"/> <!-- #09000d-->
+        <meta charset="utf-8" />
+        <link rel="icon" href="%sveltekit.assets%/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        %sveltekit.head%
+        <style>
+            html {
+                filter: hue-rotate(180deg) saturate(0.85) brightness(1.05);
+            }
+        </style>
+    </head>
+    <body data-sveltekit-preload-data="hover" class="bg-[#09000d]">
+        <div style="display: contents" class="">%sveltekit.body%</div>
+    </body>
 </html>

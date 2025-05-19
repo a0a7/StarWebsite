@@ -122,7 +122,7 @@
             </a>
         </span>-->
         <a
-            class="fixed -right-1 top-[22px] md:top-6 md:right-8 z-50 flex items-center gap-2 pl-8 pr-6 pt-[6px] pb-[10px] rounded-[30px] text-[#e1d3e2] text-lg font-bold font-mastery transition-all duration-200 group select-none cursor-pointer shadow-lg outline-none"
+            class="fixed -right-1 top-[22px] md:top-6 md:right-8 z-50 flex items-center gap-2 pl-[28px] pr-4 pt-[6px] pb-[10px] rounded-[30px] text-[#e1d3e2] text-lg font-bold font-mastery transition-all duration-200 group select-none cursor-pointer shadow-lg outline-none"
             style="backdrop-filter: blur(2px); background-image: url('/img/lines.png'); background-size: cover, cover; background-repeat: no-repeat, no-repeat;"
             aria-label="Open about me page"
             href="https://about.a0.ax/"
@@ -149,7 +149,7 @@
                 title="click to copy"
                 aria-label="Copy email address to clipboard"
             >
-                alexander@a0.ax
+                aw@a0.ax
             </button>
             <div class="text-fuchsia-50">———</div>
             <a class="hover:opacity-80" href="openpgp4fpr:422c4cc0cebb122f9efe3b55e9443ee1e32b173a" target="_blank" rel="noopener noreferrer">

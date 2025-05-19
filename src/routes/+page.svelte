@@ -126,6 +126,7 @@
             style="backdrop-filter: blur(2px); background-image: url('/img/lines.png'); background-size: cover, cover; background-repeat: no-repeat, no-repeat;"
             aria-label="Open about me page"
             href="https://about.a0.ax/"
+            target="_blank"
         >
             <span class="transition-opacity duration-200 group-hover:opacity-80">a&zwnj;bout</span> <!-- zero width non joiner to prevent ligaturization of ab in font -->
             <svg

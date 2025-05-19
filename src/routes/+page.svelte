@@ -121,14 +121,13 @@
                 </svg>
             </a>
         </span>-->
-        <button
-            type="button"
-            class="fixed right-px top-[18px] md:top-6 md:right-8 z-50 flex items-center gap-2 pl-8 pr-6 pt-[6px] pb-[10px] rounded-[30px] text-[#e1d3e2] text-lg font-bold font-mastery transition-all duration-200 group select-none cursor-pointer shadow-lg outline-none"
+        <a
+            class="fixed -right-1 top-[22px] md:top-6 md:right-8 z-50 flex items-center gap-2 pl-8 pr-6 pt-[6px] pb-[10px] rounded-[30px] text-[#e1d3e2] text-lg font-bold font-mastery transition-all duration-200 group select-none cursor-pointer shadow-lg outline-none"
             style="backdrop-filter: blur(2px); background-image: url('/img/lines.png'); background-size: cover, cover; background-repeat: no-repeat, no-repeat;"
-            on:click={() => window.open(`https://about.${window.location.hostname.replace(/^www\./, '')}`, '_blank')}
-            aria-label="Open about me page in new tab"
+            aria-label="Open about me page"
+            href="https://about.a0.ax/"
         >
-            <span class="transition-opacity duration-200 group-hover:opacity-80">a&#6158;bout</span> <!-- mongolian character joiner to make the a and b not be a digraph because that's hard to read without context -->
+            <span class="transition-opacity duration-200 group-hover:opacity-80">a&zwnj;bout</span> <!-- zero width non joiner to prevent ligaturization of ab in font -->
             <svg
                 class="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1"
                 fill="none"
@@ -138,7 +137,7 @@
             >
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
             </svg>
-        </button>
+        </a>
         <div class="overflow-x-hidden pr-1 mx-auto w-full text-center justify-center flex flex-col items-center md:text-center font-bold font-varela text-fuchsia-50 ">
             <button
                 type="button"
@@ -149,7 +148,7 @@
                 title="click to copy"
                 aria-label="Copy email address to clipboard"
             >
-                a0a7 &lt; aw@a0.ax &gt;
+                alexander@a0.ax
             </button>
             <div class="text-fuchsia-50">———</div>
             <a class="hover:opacity-80" href="openpgp4fpr:422c4cc0cebb122f9efe3b55e9443ee1e32b173a" target="_blank" rel="noopener noreferrer">

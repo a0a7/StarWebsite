@@ -54,7 +54,7 @@
   </svelte:fragment>8
   <svelte:fragment slot="image">
     {#if project.image === "aes.png" || project.image === "motiongis.png"}
-    <div class="relative h-full w-full mr-5">
+    <div class="relative h-full w-full mr-5 mt-1">
       <img
         alt={project.image.split('.')[0]}
         src={project.image}

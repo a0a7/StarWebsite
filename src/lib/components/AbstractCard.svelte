@@ -3,7 +3,7 @@
 </script>
   
 <div 
-  class="bg-glassomorphism md:w-[30rem] flex-1 p-4 mt-7 overflow-x-visible transition-transform" 
+  class="relative bg-glassomorphism md:w-[30rem] flex-1 p-4 mt-7 overflow-x-visible transition-transform" 
   use:svelteTilt={{
     max: 15,
     perspective: 1500,
@@ -22,4 +22,7 @@
     <slot name="date"/>
   </p>
   <slot name="end" />
+  <div class="absolute right-0 top-0 bottom-0">
+    <slot name="image" />
+  </div>
 </div>

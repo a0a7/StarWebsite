@@ -51,5 +51,20 @@
         </span>
       {/each}
     </div>
+  </svelte:fragment>8
+  <svelte:fragment slot="image">
+    {#if project.image === "aes.png" || project.image === "motiongis.png"}
+    <div class="relative h-full w-full mr-5">
+      <img
+        alt={project.image.split('.')[0]}
+        src={project.image}
+        class="h-[90%] my-auto absoulte opacity-[25%] w-full object-contain"
+        style="filter: invert(78%) sepia(6%) saturate(700%) hue-rotate(251deg) brightness(81%) contrast(86%) blur(2px);
+               mask-image: linear-gradient(to bottom right, transparent 21%, black 75%, black 100%); -webkit-mask-image: linear-gradient(to bottom right, transparent 21%, black 75%, black 100%);
+        "
+      >
+    </div>
+    {/if}
   </svelte:fragment>
+
 </AbstractCard>

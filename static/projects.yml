@@ -2,6 +2,7 @@ regions:
   name: regions.pages.dev
   github: motionGIS/RegionMapGenerator
   url: "https://regions.pages.dev"
+  image: motiongis.png
   start_date: 2025-05-01
   end_date: 2025-05-01
   technologies:
@@ -14,6 +15,7 @@ regions:
     
 create_addons_index:
   name: Create Addons Index
+  image: aes.png
   github: a0a7/CreateAddonsIndex
   url: "https://createaddons.com"
   start_date: 2025-03-01
@@ -90,6 +92,7 @@ kana_quiz:
 
 svelte_strava_visualizer:
   name: strava.tools
+  image: motiongis.png
   github: a0a7/strava.tools
   url: "https://strava-tools.pages.dev/"
   start_date: 2024-04-28
@@ -105,6 +108,7 @@ svelte_strava_visualizer:
 
 svelte_strava_mapper:
   name: Svelte Multi-Activity Heatmap
+  image: motiongis.png
   github: a0a7/StravaMultiMapper
   url: "https://stravamap.pages.dev/"
   start_date: 2024-03-28
@@ -120,6 +124,7 @@ svelte_strava_mapper:
 
 transit_cards_map:
   name: Transit Fare Card Map
+  image: motiongis.png
   github: a0a7/TransitCardsMap
   url: "https://transitcards.pages.dev/"
   start_date: 2024-02-28
@@ -134,6 +139,7 @@ transit_cards_map:
 
 dynamic_village_mod:
   name: "Dynamic Village"
+  image: aes.png
   github: aesefficio/DynamicVillageMod
   modrinth_url: https://modrinth.com/mod/dynamic-village
   curseforge_url: https://www.curseforge.com/minecraft/mc-mods/dynamic-village
@@ -161,6 +167,7 @@ plackard_generator:
 
 interiors_mod:
   name: "Create: Interiors"
+  image: aes.png
   github: aesefficio/CreateInteriorsMod
   modrinth_url: https://modrinth.com/mod/interiors
   curseforge_url: https://www.curseforge.com/minecraft/mc-mods/interiors
@@ -176,6 +183,7 @@ interiors_mod:
     
 bells_and_whistles_mod:
   name: "Bells & Whistles"
+  image: aes.png
   github: aesefficio/BellsAndWhistlesMod
   modrinth_url: https://modrinth.com/mod/bellsandwhistles
   modrinth_id: gJ5afkVv

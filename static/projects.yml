@@ -11,7 +11,7 @@ regions:
     - Tailwind
     - MapLibre
   description: |
-    Convenient way to generate images of regions & subdivisions of the US and Canada with support for displaying GPX tracks.
+    Convenient tool for generating images of subdivisions & broad regions of the US & Canada with support for displaying GPX data.
     
 create_addons_index:
   name: Create Addons Index
@@ -27,12 +27,12 @@ create_addons_index:
     - CloudflareWorkers
     - NodeJS
   description: |
-    Fullstack Create addons mod browser made with Cloudflare serverless workers and node
+    Fullstack application for browsing Create mod addons. Made with Cloudflare serverless workers and node.
 
 muscles_ooo:
-  name: garminstats
+  name: Stats for Garmin
   github: a0a7/GymStats
-  url: "https://garminstats.pages.dev/"
+  url: "https://garminstats.pages.dev/" 
   start_date: 2025-01-28
   end_date: 2025-05-02
   technologies:
@@ -40,18 +40,18 @@ muscles_ooo:
     - Typescript 
     - Tailwind
   description: |
-    API application for analysis of workout & health data from Garmin watches.
+    Data-driven webapp with various analytical tools for workout & health data from Garmin watches.
 
 gregg_recognition:
   name: GreggRecognition
   github: a0a7/MelinRecognition/tree/main/GreggRecognition/src
   start_date: 2024-09-28
-  end_date: 2025-02-02
+  end_date: 2025-06-02
   technologies:
-    - PyTorch 
     - Python
+    - PyTorch 
   description: |
-    GCNN for reading shorthand. Yearlong project for MTKA Research.
+    Gated Convolutional Neural Network for scanning lines of Gregg Shorthand. Yearlong project for Minnetonka Research.
 
 grain_filter:
   name: Grain Filter
@@ -64,7 +64,7 @@ grain_filter:
     - Typescript
     - Tailwind
   description: |
-    Webtoy + API to add a 90s-style grain effect to an image.
+    Open API & website that adds a 90s-style grain effect to images.
     
 contain_alibaba:
   name: Alibaba Container
@@ -78,7 +78,7 @@ contain_alibaba:
     Browser addon to limit tracking from Alibaba Group.
 
 kana_quiz:
-  name: Kana Trainer
+  name: Kanatrainer
   github: a0a7/KanaQuiz
   url: "https://kanaquiz.pages.dev/"
   start_date: 2024-05-28
@@ -88,7 +88,7 @@ kana_quiz:
     - Typescript
     - Tailwind
   description: |
-    Feature-rich and customziable kana practice website.
+    Feature-rich Japanese language practice website.
 
 svelte_strava_visualizer:
   name: strava.tools
@@ -135,7 +135,7 @@ transit_cards_map:
     - Tailwind
     - MapLibre
   description: |
-    Visual database of transit fare cards from around the world
+    Visual browser for transit fare cards from around the world.
 
 dynamic_village_mod:
   name: "Dynamic Village"
@@ -150,7 +150,7 @@ dynamic_village_mod:
     - Java
     - Gradle
   description: |
-    Cross-version NPC & structure-focused mod. Downloads > 3.5m.
+    World & NPC Minecraft mod. Downloads > 4m.
 
 plackard_generator:
   name: Name Plackard Generator
@@ -163,7 +163,7 @@ plackard_generator:
     - HTML
     - CSS
   description: |
-    Design tool for appealing congressional Debate name plackards.
+    Online tool to design name plackards for Congressional Debate.
 
 interiors_mod:
   name: "Create: Interiors"
@@ -179,7 +179,7 @@ interiors_mod:
     - Gradle
     - Blockbench
   description: |
-    Multi-version, multi-loader Minecraft mod. Downloads > 8m.
+    Multi-version & multi-loader Minecraft mod with > 10m downloads.
     
 bells_and_whistles_mod:
   name: "Bells & Whistles"
@@ -196,7 +196,7 @@ bells_and_whistles_mod:
     - Gradle
     - Blockbench
   description: |
-    Multi-version, multi-loader Minecraft mod. Downloads > 8m.
+    Multi-version Minecraft content mod with > 10m downloads.
 
 strava_card:
   name: Strava Stats Card Generator
@@ -212,7 +212,7 @@ strava_card:
     Tool to generate Strava profile cards showing cycling statistics. 
 
 strava_map:
-  name: Strava Activity Mapper
+  name: Leaflet Activity Mapper
   github: a0a7/StravaMapper
   url: https://a0a7.github.io/StravaMapper/ 
   start_date: 2023-04-16
@@ -224,7 +224,7 @@ strava_map:
     - HTML
     - CSS
   description: |
-    Simple & efficient web app to map Strava activities. 
+    Simple web app to map Strava activities. 
 
 signboard_generator:
   name: Signboard Generator
@@ -237,4 +237,4 @@ signboard_generator:
     - HTML
     - CSS
   description: |
-    Webtoy to make images in the style of roadside signboards.
+    Webtoy to create electronic roadside signboard visuals.

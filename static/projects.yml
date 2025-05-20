@@ -1,3 +1,17 @@
+regions:
+  name: regions.pages.dev
+  github: motionGIS/RegionMapGenerator
+  url: "https://regions.pages.dev"
+  start_date: 2025-05-01
+  end_date: 2025-05-01
+  technologies:
+    - Svelte
+    - Typescript 
+    - Tailwind
+    - MapLibre
+  description: |
+    Convenient way to generate images of regions & subdivisions of the US and Canada with support for displaying GPX tracks.
+    
 create_addons_index:
   name: Create Addons Index
   github: a0a7/CreateAddonsIndex
@@ -11,7 +25,7 @@ create_addons_index:
     - CloudflareWorkers
     - NodeJS
   description: |
-    Always-up-to-date online database of Create addons made with Cloudflare serverless workers and node scripts
+    Fullstack Create addons mod browser made with Cloudflare serverless workers and node
 
 muscles_ooo:
   name: garminstats

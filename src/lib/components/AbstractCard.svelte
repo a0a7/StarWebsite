@@ -15,14 +15,15 @@
     gyroscope: true,
   }}
 >
-  <h2 class="text-l md:text-xl text-bold text-fuchsia-50 font-varela">
+  <div class="absolute right-0 top-0 bottom-0 z-0">
+    <slot name="image" />
+  </div>
+
+  <h2 class="text-l md:text-xl text-bold text-fuchsia-50 font-varela z-10">
     <slot name="title" />
   </h2>
-  <p class="text-sm text-fuchsia-50 font-varela opacity-85">
+  <p class="text-sm text-fuchsia-50 font-varela opacity-85 z-10">
     <slot name="date"/>
   </p>
   <slot name="end" />
-  <div class="absolute right-0 top-0 bottom-0">
-    <slot name="image" />
-  </div>
 </div>

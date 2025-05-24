@@ -3,8 +3,8 @@ regions:
   github: motionGIS/RegionMapGenerator
   url: "https://regions.pages.dev"
   image: motiongis.png
-  start_date: 2025-05-01
-  end_date: 2025-05-01
+  start_date: 2025-05-28
+  end_date: 2025-05-31
   technologies:
     - Svelte
     - Typescript 

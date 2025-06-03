@@ -11,7 +11,7 @@
     scale: 1.05,
     speed: 500,
     glare: true, // @ts-expect-error: it exists
-    "max-glare": 0.3,
+    "max-glare": 0.3, 
     "glare-prerender": false,
     gyroscope: true,
   }}

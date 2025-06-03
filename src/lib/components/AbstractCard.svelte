@@ -3,13 +3,12 @@
 </script>
   
 <div 
-  class="relative bg-glassomorphism md:w-[30rem] flex-1 p-4 mt-7 overflow-x-visible transition-transform" 
-  use:svelteTilt={{
+class="relative bg-glassomorphism md:w-[30rem] flex-1 p-4 mt-7 overflow-x-visible transition-transform" use:svelteTilt={{ 
     max: 15,
     perspective: 1500,
     scale: 1.05,
     speed: 500,
-    glare: true,
+    glare: true, // @ts-expect-error: it exists
     "max-glare": 0.3,
     "glare-prerender": false,
     gyroscope: true,

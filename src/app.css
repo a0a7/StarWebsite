@@ -76,12 +76,12 @@ body {
     position: absolute;
 
     top: -135%;
-    transform: translateX(-25%);
+    transform: translateX(calc(var(--char-count) * -1.6% - 15%));
 
     padding: 2px 5px 2px 5px;
     border-radius: 4px;
     background:#09000d;
-    opacity: 0.95;
+    box-shadow: #09000d 1px 1px 10px 0px;
     color: #fff;
 
     text-align: center;
@@ -89,7 +89,8 @@ body {
     align-self: center;
     white-space: nowrap;
     display:none;
-    font-family: VarelaRound;
+    font-weight: 900;
+    font-family: monospace;
 }
 .tooltip-social:hover:before,
 .tooltip-discord:hover:before,

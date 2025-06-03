@@ -43,15 +43,17 @@
     <p class="text-sm text-fuchsia-50 pt-2 font-varela">{project.description}</p>
     <div slot="end" class="flex flex-row space-x-2 pt-2">
       {#each project.technologies as tag}
-        <span class="pr-1 tooltip font-varela" data-text="{tag}">
+      <span class="pr-1" style="--char-count: {tag.length}">
+        <span class="tooltip font-varela"  data-text="{tag === 'CloudflareWorkers' ? 'Cloudflare Workers' : tag}">
           <img class="w-6 {tag!=="cloudflareworkers"?'whiteicon':''}"
             src="{`img/logos/${tag.split(' ')[0].toLowerCase().replace(/[ .]/g, '')}.svg`}"
             alt="{tag} icon"
           >
         </span>
+        </span>
       {/each}
     </div>
-  </svelte:fragment>8
+  </svelte:fragment>
   <svelte:fragment slot="image">
     {#if project.image === "aes.png" || project.image === "motiongis.png" || project.image === "tonkadebate.png"}
     <div class="relative h-full w-fit mr-5 ml-0 mt-1 z-0 justify-right items-end">

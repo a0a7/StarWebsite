@@ -12,6 +12,7 @@
     let observer: MutationObserver;
     let cursorFollower: HTMLElement;
     let isHoveringStatsCard = false;
+    let isMouseInsideViewport = true;
 
     function lerp(start: number, end: number, t: number) {
         return start * (1 - t) + end * t;
@@ -77,12 +78,25 @@
                 cursorFollower.style.left = e.clientX + 'px';
                 cursorFollower.style.top = e.clientY + 'px';
                 
-                // Hide cursor follower when hovering StatsCard
-                if (isHoveringStatsCard) {
+                // Hide cursor follower when hovering StatsCard or mouse is outside viewport
+                if (isHoveringStatsCard || !isMouseInsideViewport) {
                     cursorFollower.style.opacity = '0';
                 } else {
                     cursorFollower.style.opacity = '1';
                 }
+            }
+        };
+
+        // Handle mouse enter/leave viewport
+        const handleMouseEnter = () => {
+            isMouseInsideViewport = true;
+            
+        };
+
+        const handleMouseLeave = () => {
+            isMouseInsideViewport = false;
+            if (cursorFollower) {
+                cursorFollower.style.opacity = '0';
             }
         };
 
@@ -116,10 +130,15 @@
             pageObserver.observe(list, { childList: true, subtree: true });
         }
 
+        // Event listeners
         document.addEventListener('mousemove', updateCursorPosition);
+        document.addEventListener('mouseenter', handleMouseEnter);
+        document.addEventListener('mouseleave', handleMouseLeave);
         
         return () => {
             document.removeEventListener('mousemove', updateCursorPosition);
+            document.removeEventListener('mouseenter', handleMouseEnter);
+            document.removeEventListener('mouseleave', handleMouseLeave);
             const statsCards = document.querySelectorAll('[data-stats-card]');
             statsCards.forEach(card => {
                 card.removeEventListener('mouseenter', handleStatsCardHover);
@@ -212,13 +231,13 @@
             >
                 aw@a0.ax
             </button>
-            <div class="text-fuchsia-50">———</div>
+            <div class="text-fuchsia-50 select-none">———</div>
             <a class="hover:opacity-80 rounded-[5px] px-1 border-2 border-dotted border-[rgba(0,0,0,0)] hover:border-fuchsia-50/40" href="openpgp4fpr:422c4cc0cebb122f9efe3b55e9443ee1e32b173a" target="_blank" rel="noopener noreferrer">
                 <span>
                     OpenPGP:&nbsp;422C&nbsp;4CC0&nbsp;CEBB&nbsp;122F&nbsp;9EFE<br>3B55&nbsp;E944&nbsp;3EE1&nbsp;E32B&nbsp;173A
                 </span>
             </a>
-            <div class="text-fuchsia-50">———</div>
+            <div class="text-fuchsia-50 select-none">———</div>
             <div class="text-fuchsia-50">
                 <a class="linkicon px-[3px] py-px !filter-none text-fuchsia-50 border-2 border-dotted border-[rgba(0,0,0,0)] rounded-[4px] hover:border-fuchsia-50/40" href="https://www.github.com/a0a7" target="_blank" rel="noopener noreferrer">
                     <span class="w-5 h-5 inline text-fuchsia-50">

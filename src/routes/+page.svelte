@@ -51,7 +51,6 @@
     });
 
    onMount(() => {
-        // Defer initial resize to ensure DOM is rendered
         setTimeout(() => resizeAfterScroll(), 1);
 
         list.addEventListener('scroll', resizeAfterScroll);
@@ -66,13 +65,26 @@
         });
         observer.observe(list, { childList: true });
 
-        // Re-run when tab becomes visible
-        document.addEventListener('visibilitychange', () => {
+        const handleVisibilityChange = () => {
             if (document.visibilityState === 'visible') {
-                resizeAfterScroll();
-                console.debug('Page is visible');
+                setTimeout(() => {
+                    resizeAfterScroll();
+                    console.debug('Page is visible - recalculating card positions');
+                }, 50);
             }
-        });
+        };
+        const handleFocus = () => {
+            setTimeout(() => {
+                resizeAfterScroll();
+                console.debug('Window focused - recalculating card positions');
+            }, 50);
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        window.addEventListener('focus', handleFocus);
+                window.addEventListener('pageshow', handleFocus);
+
+
         const updateCursorPosition = (e: MouseEvent) => {
             if (cursorFollower) {
                 cursorFollower.style.left = e.clientX + 'px';
@@ -87,10 +99,8 @@
             }
         };
 
-        // Handle mouse enter/leave viewport
         const handleMouseEnter = () => {
             isMouseInsideViewport = true;
-            
         };
 
         const handleMouseLeave = () => {
@@ -100,7 +110,6 @@
             }
         };
 
-        // Add hover detection for StatsCards
         const handleStatsCardHover = () => {
             isHoveringStatsCard = true;
         };
@@ -109,7 +118,6 @@
             isHoveringStatsCard = false;
         };
 
-        // Set up event listeners for StatsCards
         const observeStatsCards = () => {
             const statsCards = document.querySelectorAll('[data-stats-card]');
             statsCards.forEach(card => {
@@ -118,10 +126,8 @@
             });
         };
 
-        // Initial setup and re-observe when DOM changes
         setTimeout(observeStatsCards, 100);
         
-        // Re-observe when switching between pages
         const pageObserver = new MutationObserver(() => {
             setTimeout(observeStatsCards, 100);
         });
@@ -130,12 +136,15 @@
             pageObserver.observe(list, { childList: true, subtree: true });
         }
 
-        // Event listeners
         document.addEventListener('mousemove', updateCursorPosition);
         document.addEventListener('mouseenter', handleMouseEnter);
         document.addEventListener('mouseleave', handleMouseLeave);
         
         return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            window.removeEventListener('focus', handleFocus);
+            window.removeEventListener('pageshow', handleFocus);
+
             document.removeEventListener('mousemove', updateCursorPosition);
             document.removeEventListener('mouseenter', handleMouseEnter);
             document.removeEventListener('mouseleave', handleMouseLeave);
@@ -167,7 +176,7 @@
 </script>
 
 <svelte:head>
-    <meta name="description" content="Mm">
+    <meta name="description" content="Alexander Weimer Programming Portfolio - a0a7">
     <meta name="keywords" content="a0a7, a0ax, lev">
     <meta name="author" content="a0a7">
     <meta name="copyright" content="a0a7" />
@@ -175,7 +184,6 @@
     <meta property="og:type" content="profile" />
     <meta property="og:profile:first_name" content="a0a7" />
     <meta property="og:profile:username" content="a0a7" />
-    <!--<meta property="og:image" content="/img/pfp.png" /> -->
     <meta property="fb:admins" content="268094773018996" />
     <meta name="theme-color" content="#09000d"/>
 </svelte:head>
@@ -284,9 +292,9 @@
                     />
                 </button>-->
         </span>
-            <div class="list overflow-x-hidden inline-block flex-1 md:flex-2 flex-col flex w-full overflow-y-hidden mt-4 md:mb-8">
+            <div class="list overflow-x-hidden flex-1 md:flex-2 flex-col flex w-full overflow-y-hidden mt-4 md:mb-8">
                 <h2 class="-my-[16px] select-none py-2 z-10 text-shadow overflow-x-hidden overflow-y-visible text-[2rem] md:text-[2.5rem]  text-center font-mastery text-fuchsia-50">projects</h2>
-                <div class=" overflow-y-scroll overflow-x-show px-5 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex md:grid md:gap-x-5 md:justify-stretch md:grid-cols-2 pb-10 {loaded == true ? '' : 'invisible'}" bind:this={list}>
+                <div class=" overflow-y-scroll overflow-x-show px-5 mx-auto w-full md:w-fit flex-1 flex-col flex md:grid md:gap-x-5 md:justify-stretch md:grid-cols-2 pb-10 {loaded == true ? '' : 'invisible'}" bind:this={list}>
                 {#if currentPage === Pages.profile}
                         {#if statistics}
                             {#each Object.entries(statistics) as [key, stats]}

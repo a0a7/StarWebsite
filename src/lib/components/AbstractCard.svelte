@@ -27,3 +27,9 @@
   </p>
   <slot name="end" />
 </div>
+
+<style>
+  * {
+    cursor: default;
+}
+</style>

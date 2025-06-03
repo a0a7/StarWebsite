@@ -4,19 +4,20 @@
     import StatsCard from "$lib/components/StatsCard.svelte";
     import { parse } from 'yaml'
     import { onMount, onDestroy, afterUpdate } from 'svelte';
-
     let projects: any;
     let publications: any;
     let loaded: boolean = false;
     let statistics: any;
     let list: HTMLElement;
     let observer: MutationObserver;
+    let cursorFollower: HTMLElement;
+    let isHoveringStatsCard = false;
 
     function lerp(start: number, end: number, t: number) {
         return start * (1 - t) + end * t;
     }
        
-    const resizeAfterScroll = () => {
+    const resizeAfterScroll = () => { // @ts-ignore
         const scrollProgress = (list.scrollTop / (list.scrollHeight - list.offsetHeight)) ?? 0;
         const center = (list.scrollTop + (lerp((list.offsetHeight / 5), (list.offsetHeight / 1.02), scrollProgress)) );
         for (let item of list.children) {
@@ -71,6 +72,61 @@
                 console.debug('Page is visible');
             }
         });
+        const updateCursorPosition = (e: MouseEvent) => {
+            if (cursorFollower) {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+                
+                // Hide cursor follower when hovering StatsCard
+                if (isHoveringStatsCard) {
+                    cursorFollower.style.opacity = '0';
+                } else {
+                    cursorFollower.style.opacity = '1';
+                }
+            }
+        };
+
+        // Add hover detection for StatsCards
+        const handleStatsCardHover = () => {
+            isHoveringStatsCard = true;
+        };
+
+        const handleStatsCardLeave = () => {
+            isHoveringStatsCard = false;
+        };
+
+        // Set up event listeners for StatsCards
+        const observeStatsCards = () => {
+            const statsCards = document.querySelectorAll('[data-stats-card]');
+            statsCards.forEach(card => {
+                card.addEventListener('mouseenter', handleStatsCardHover);
+                card.addEventListener('mouseleave', handleStatsCardLeave);
+            });
+        };
+
+        // Initial setup and re-observe when DOM changes
+        setTimeout(observeStatsCards, 100);
+        
+        // Re-observe when switching between pages
+        const pageObserver = new MutationObserver(() => {
+            setTimeout(observeStatsCards, 100);
+        });
+        
+        if (list) {
+            pageObserver.observe(list, { childList: true, subtree: true });
+        }
+
+        document.addEventListener('mousemove', updateCursorPosition);
+        
+        return () => {
+            document.removeEventListener('mousemove', updateCursorPosition);
+            const statsCards = document.querySelectorAll('[data-stats-card]');
+            statsCards.forEach(card => {
+                card.removeEventListener('mouseenter', handleStatsCardHover);
+                card.removeEventListener('mouseleave', handleStatsCardLeave);
+            });
+            pageObserver.disconnect();
+        };
     });
     afterUpdate(() => {
         if (list && ((currentPage === Pages.projects && projects) || (currentPage === Pages.profile && statistics))) {
@@ -105,15 +161,20 @@
     <meta name="theme-color" content="#09000d"/>
 </svelte:head>
 
+<div 
+    bind:this={cursorFollower}
+    class="cursor-follower pointer-events-none fixed w-6 h-6 rounded-full bg-fuchsia-200/20 backdrop-blur-sm border border-fuchsia-300/30 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-100 ease-out z-50"
+></div>
+
 <main class="justify-between items-center l-0">
     <div class="flex flex-col h-[100vh] pt-2 md:pt-4 w-full">
         <h1 class="transform scale-0">a0a7 Portfolio</h1> <!-- SEO -->
         <!-- <span class="w-full text-center justify-center flex items-center md:text-center font-bold font-mastery text-fuchsia-50 pb-4 md:pb-8">
             <a class="mr-6 tooltip-social" data-text="@a0a7" href="https://github.com/a0a7" target="_blank" rel="noopener noreferrer">
-                <svg width="44px" height="44px" class="linkicon inline cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+                <svg width="44px" height="44px" class="linkicon inline /cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
             </a>
             <a class="tooltip-discord" data-text="@a0a7" href="https://discord.com/users/366213124765777933" target="_blank" rel="noopener noreferrer">
-                <svg width="53px" height="53px" class="linkicon inline cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M524.5 69.8a1.5 1.5 0 0 0 -.8-.7A485.1 485.1 0 0 0 404.1 32a1.8 1.8 0 0 0 -1.9 .9 337.5 337.5 0 0 0 -14.9 30.6 447.8 447.8 0 0 0 -134.4 0 309.5 309.5 0 0 0 -15.1-30.6 1.9 1.9 0 0 0 -1.9-.9A483.7 483.7 0 0 0 116.1 69.1a1.7 1.7 0 0 0 -.8 .7C39.1 183.7 18.2 294.7 28.4 404.4a2 2 0 0 0 .8 1.4A487.7 487.7 0 0 0 176 479.9a1.9 1.9 0 0 0 2.1-.7A348.2 348.2 0 0 0 208.1 430.4a1.9 1.9 0 0 0 -1-2.6 321.2 321.2 0 0 1 -45.9-21.9 1.9 1.9 0 0 1 -.2-3.1c3.1-2.3 6.2-4.7 9.1-7.1a1.8 1.8 0 0 1 1.9-.3c96.2 43.9 200.4 43.9 295.5 0a1.8 1.8 0 0 1 1.9 .2c2.9 2.4 6 4.9 9.1 7.2a1.9 1.9 0 0 1 -.2 3.1 301.4 301.4 0 0 1 -45.9 21.8 1.9 1.9 0 0 0 -1 2.6 391.1 391.1 0 0 0 30 48.8 1.9 1.9 0 0 0 2.1 .7A486 486 0 0 0 610.7 405.7a1.9 1.9 0 0 0 .8-1.4C623.7 277.6 590.9 167.5 524.5 69.8zM222.5 337.6c-29 0-52.8-26.6-52.8-59.2S193.1 219.1 222.5 219.1c29.7 0 53.3 26.8 52.8 59.2C275.3 311 251.9 337.6 222.5 337.6zm195.4 0c-29 0-52.8-26.6-52.8-59.2S388.4 219.1 417.9 219.1c29.7 0 53.3 26.8 52.8 59.2C470.7 311 447.5 337.6 417.9 337.6z"/></svg>
+                <svg width="53px" height="53px" class="linkicon inline /cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M524.5 69.8a1.5 1.5 0 0 0 -.8-.7A485.1 485.1 0 0 0 404.1 32a1.8 1.8 0 0 0 -1.9 .9 337.5 337.5 0 0 0 -14.9 30.6 447.8 447.8 0 0 0 -134.4 0 309.5 309.5 0 0 0 -15.1-30.6 1.9 1.9 0 0 0 -1.9-.9A483.7 483.7 0 0 0 116.1 69.1a1.7 1.7 0 0 0 -.8 .7C39.1 183.7 18.2 294.7 28.4 404.4a2 2 0 0 0 .8 1.4A487.7 487.7 0 0 0 176 479.9a1.9 1.9 0 0 0 2.1-.7A348.2 348.2 0 0 0 208.1 430.4a1.9 1.9 0 0 0 -1-2.6 321.2 321.2 0 0 1 -45.9-21.9 1.9 1.9 0 0 1 -.2-3.1c3.1-2.3 6.2-4.7 9.1-7.1a1.8 1.8 0 0 1 1.9-.3c96.2 43.9 200.4 43.9 295.5 0a1.8 1.8 0 0 1 1.9 .2c2.9 2.4 6 4.9 9.1 7.2a1.9 1.9 0 0 1 -.2 3.1 301.4 301.4 0 0 1 -45.9 21.8 1.9 1.9 0 0 0 -1 2.6 391.1 391.1 0 0 0 30 48.8 1.9 1.9 0 0 0 2.1 .7A486 486 0 0 0 610.7 405.7a1.9 1.9 0 0 0 .8-1.4C623.7 277.6 590.9 167.5 524.5 69.8zM222.5 337.6c-29 0-52.8-26.6-52.8-59.2S193.1 219.1 222.5 219.1c29.7 0 53.3 26.8 52.8 59.2C275.3 311 251.9 337.6 222.5 337.6zm195.4 0c-29 0-52.8-26.6-52.8-59.2S388.4 219.1 417.9 219.1c29.7 0 53.3 26.8 52.8 59.2C470.7 311 447.5 337.6 417.9 337.6z"/></svg>
             </a>
             <a class="ml-6 tooltip-social" data-text="@awa0a7" href="https://t.me/awa0a7" target="_blank" rel="noopener noreferrer">
                 <svg width="44px" height="44px" class="linkicon inline cursor-poipnter" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="10 10 45 45">
@@ -122,7 +183,7 @@
             </a>
         </span>-->
         <a
-            class="fixed -right-1 top-[22px] md:top-6 md:right-8 z-50 flex items-center gap-2 pl-[28px] pr-4 pt-[6px] pb-[10px] rounded-[30px] text-[#e1d3e2] text-lg font-bold font-mastery transition-all duration-200 group select-none cursor-pointer shadow-lg outline-none"
+            class="fixed -right-1 top-[22px] md:top-6 md:right-8 z-50 flex items-center gap-2 pl-[28px] pr-4 pt-[6px] pb-[10px] rounded-[30px] text-[#e1d3e2] text-lg font-bold font-mastery transition-all duration-200 group select-none /cursor-pointer shadow-lg outline-none"
             style="backdrop-filter: blur(2px); background-image: url('/img/lines.png'); background-size: cover, cover; background-repeat: no-repeat, no-repeat;"
             aria-label="Open about me page"
             href="https://about.a0.ax/"
@@ -142,7 +203,7 @@
         <div class="overflow-x-hidden pr-1 mx-auto w-full text-center justify-center flex flex-col items-center md:text-center font-bold font-varela text-fuchsia-50 ">
             <button
                 type="button"
-                class="hover:opacity-80 cursor-pointer select-all bg-transparent border-none p-0 m-0 font-inherit text-inherit"
+                class="hover:opacity-80  rounded-[4px] /cursor-pointer select-all bg-transparent p-0 m-0 font-inherit text-inherit border-2 border-dotted border-[rgba(0,0,0,0)] hover:border-fuchsia-50/40 px-1"
                 on:click={() => {
                     navigator.clipboard.writeText('aw@a0.ax');
                 }}
@@ -152,34 +213,34 @@
                 aw@a0.ax
             </button>
             <div class="text-fuchsia-50">———</div>
-            <a class="hover:opacity-80" href="openpgp4fpr:422c4cc0cebb122f9efe3b55e9443ee1e32b173a" target="_blank" rel="noopener noreferrer">
+            <a class="hover:opacity-80 rounded-[5px] px-1 border-2 border-dotted border-[rgba(0,0,0,0)] hover:border-fuchsia-50/40" href="openpgp4fpr:422c4cc0cebb122f9efe3b55e9443ee1e32b173a" target="_blank" rel="noopener noreferrer">
                 <span>
                     OpenPGP:&nbsp;422C&nbsp;4CC0&nbsp;CEBB&nbsp;122F&nbsp;9EFE<br>3B55&nbsp;E944&nbsp;3EE1&nbsp;E32B&nbsp;173A
                 </span>
             </a>
             <div class="text-fuchsia-50">———</div>
             <div class="text-fuchsia-50">
-                <a class="linkicon !filter-none text-fuchsia-50" href="https://www.github.com/a0a7" target="_blank" rel="noopener noreferrer">
+                <a class="linkicon px-[3px] py-px !filter-none text-fuchsia-50 border-2 border-dotted border-[rgba(0,0,0,0)] rounded-[4px] hover:border-fuchsia-50/40" href="https://www.github.com/a0a7" target="_blank" rel="noopener noreferrer">
                     <span class="w-5 h-5 inline text-fuchsia-50">
-                        <svg class="inline cursor-pointer w-5 h-5 text-fuchsia-50 color-fuchsia-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select: none; display: inline-block; fill:  color: white; flex-shrink: 0;" color="rgb(253 244 255)" fill="rgb(253 244 255)"><g color="white" ><path d="M216,104v8a56.06,56.06,0,0,1-48.44,55.47A39.8,39.8,0,0,1,176,192v40a8,8,0,0,1-8,8H104a8,8,0,0,1-8-8V216H72a40,40,0,0,1-40-40A24,24,0,0,0,8,152a8,8,0,0,1,0-16,40,40,0,0,1,40,40,24,24,0,0,0,24,24H96v-8a39.8,39.8,0,0,1,8.44-24.53A56.06,56.06,0,0,1,56,112v-8a58.14,58.14,0,0,1,7.69-28.32A59.78,59.78,0,0,1,69.07,28,8,8,0,0,1,76,24a59.75,59.75,0,0,1,48,24h24a59.75,59.75,0,0,1,48-24,8,8,0,0,1,6.93,4,59.74,59.74,0,0,1,5.37,47.68A58,58,0,0,1,216,104Z"></path></g></svg>
+                        <svg class="inline /cursor-pointer w-5 h-5 text-fuchsia-50 color-fuchsia-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" focusable="false" style="user-select: none; display: inline-block; fill:  color: white; flex-shrink: 0;" color="rgb(253 244 255)" fill="rgb(253 244 255)"><g color="white" ><path d="M216,104v8a56.06,56.06,0,0,1-48.44,55.47A39.8,39.8,0,0,1,176,192v40a8,8,0,0,1-8,8H104a8,8,0,0,1-8-8V216H72a40,40,0,0,1-40-40A24,24,0,0,0,8,152a8,8,0,0,1,0-16,40,40,0,0,1,40,40,24,24,0,0,0,24,24H96v-8a39.8,39.8,0,0,1,8.44-24.53A56.06,56.06,0,0,1,56,112v-8a58.14,58.14,0,0,1,7.69-28.32A59.78,59.78,0,0,1,69.07,28,8,8,0,0,1,76,24a59.75,59.75,0,0,1,48,24h24a59.75,59.75,0,0,1,48-24,8,8,0,0,1,6.93,4,59.74,59.74,0,0,1,5.37,47.68A58,58,0,0,1,216,104Z"></path></g></svg>
                     </span>
                     <span class="text-fuchsia-50">
                         @a0a7
                     </span>
-                </a>
+                </a> 
                 <span class="text-fuchsia-50">&nbsp; | &nbsp;</span>
-                <a class="linkicon !filter-none text-fuchsia-50" href="https://t.me/awa0a7" target="_blank" rel="noopener noreferrer">
+                <a class="linkicon px-[3px] py-px !filter-none text-fuchsia-50 border-2 border-dotted border-[rgba(0,0,0,0)] rounded-[4px] hover:border-fuchsia-50/40" href="https://t.me/awa0a7" target="_blank" rel="noopener noreferrer">
                     <span class="w-5 h-5 inline text-fuchsia-50">
-                        <svg width="1.25rem" height="1.25rem" class="inline cursor-pointer text-fuchsia-50 color-fuchsia-50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;" viewBox="0 0 27 27" color="rgb(253 244 255)" fill="rgb(253 244 255)"><path id="telegram-1" d="M18.384,22.779c0.322,0.228 0.737,0.285 1.107,0.145c0.37,-0.141 0.642,-0.457 0.724,-0.84c0.869,-4.084 2.977,-14.421 3.768,-18.136c0.06,-0.28 -0.04,-0.571 -0.26,-0.758c-0.22,-0.187 -0.525,-0.241 -0.797,-0.14c-4.193,1.552 -17.106,6.397 -22.384,8.35c-0.335,0.124 -0.553,0.446 -0.542,0.799c0.012,0.354 0.25,0.661 0.593,0.764c2.367,0.708 5.474,1.693 5.474,1.693c0,0 1.452,4.385 2.209,6.615c0.095,0.28 0.314,0.5 0.603,0.576c0.288,0.075 0.596,-0.004 0.811,-0.207c1.216,-1.148 3.096,-2.923 3.096,-2.923c0,0 3.572,2.619 5.598,4.062Zm-11.01,-8.677l1.679,5.538l0.373,-3.507c0,0 6.487,-5.851 10.185,-9.186c0.108,-0.098 0.123,-0.262 0.033,-0.377c-0.089,-0.115 -0.253,-0.142 -0.376,-0.064c-4.286,2.737 -11.894,7.596 -11.894,7.596Z"/></svg>
+                        <svg width="1.25rem" height="1.25rem" class="inline /cursor-pointer text-fuchsia-50 color-fuchsia-50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;" viewBox="0 0 27 27" color="rgb(253 244 255)" fill="rgb(253 244 255)"><path id="telegram-1" d="M18.384,22.779c0.322,0.228 0.737,0.285 1.107,0.145c0.37,-0.141 0.642,-0.457 0.724,-0.84c0.869,-4.084 2.977,-14.421 3.768,-18.136c0.06,-0.28 -0.04,-0.571 -0.26,-0.758c-0.22,-0.187 -0.525,-0.241 -0.797,-0.14c-4.193,1.552 -17.106,6.397 -22.384,8.35c-0.335,0.124 -0.553,0.446 -0.542,0.799c0.012,0.354 0.25,0.661 0.593,0.764c2.367,0.708 5.474,1.693 5.474,1.693c0,0 1.452,4.385 2.209,6.615c0.095,0.28 0.314,0.5 0.603,0.576c0.288,0.075 0.596,-0.004 0.811,-0.207c1.216,-1.148 3.096,-2.923 3.096,-2.923c0,0 3.572,2.619 5.598,4.062Zm-11.01,-8.677l1.679,5.538l0.373,-3.507c0,0 6.487,-5.851 10.185,-9.186c0.108,-0.098 0.123,-0.262 0.033,-0.377c-0.089,-0.115 -0.253,-0.142 -0.376,-0.064c-4.286,2.737 -11.894,7.596 -11.894,7.596Z"/></svg>
                     </span>
                     <span class="text-fuchsia-50">
                         @awa0a7
                     </span>
                 </a>
                 <span class="text-fuchsia-50">&nbsp; | &nbsp;</span>
-                <a class="linkicon !filter-none text-fuchsia-50" href="https://discord.com/users/366213124765777933" target="_blank" rel="noopener noreferrer">
+                <a class="linkicon px-[3px] py-px !filter-none text-fuchsia-50 border-2 border-dotted border-[rgba(0,0,0,0)] rounded-[4px] hover:border-fuchsia-50/40" href="https://discord.com/users/366213124765777933" target="_blank" rel="noopener noreferrer">
                     <span class="w-5 h-5 inline text-fuchsia-50">
-                        <svg  class="w-5 h-5 !filter-none inline cursor-pointer text-fuchsia-50 color-fuchsia-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" color="rgb(253 244 255)" fill="rgb(253 244 255)"><path d="M524.5 69.8a1.5 1.5 0 0 0 -.8-.7A485.1 485.1 0 0 0 404.1 32a1.8 1.8 0 0 0 -1.9 .9 337.5 337.5 0 0 0 -14.9 30.6 447.8 447.8 0 0 0 -134.4 0 309.5 309.5 0 0 0 -15.1-30.6 1.9 1.9 0 0 0 -1.9-.9A483.7 483.7 0 0 0 116.1 69.1a1.7 1.7 0 0 0 -.8 .7C39.1 183.7 18.2 294.7 28.4 404.4a2 2 0 0 0 .8 1.4A487.7 487.7 0 0 0 176 479.9a1.9 1.9 0 0 0 2.1-.7A348.2 348.2 0 0 0 208.1 430.4a1.9 1.9 0 0 0 -1-2.6 321.2 321.2 0 0 1 -45.9-21.9 1.9 1.9 0 0 1 -.2-3.1c3.1-2.3 6.2-4.7 9.1-7.1a1.8 1.8 0 0 1 1.9-.3c96.2 43.9 200.4 43.9 295.5 0a1.8 1.8 0 0 1 1.9 .2c2.9 2.4 6 4.9 9.1 7.2a1.9 1.9 0 0 1 -.2 3.1 301.4 301.4 0 0 1 -45.9 21.8 1.9 1.9 0 0 0 -1 2.6 391.1 391.1 0 0 0 30 48.8 1.9 1.9 0 0 0 2.1 .7A486 486 0 0 0 610.7 405.7a1.9 1.9 0 0 0 .8-1.4C623.7 277.6 590.9 167.5 524.5 69.8zM222.5 337.6c-29 0-52.8-26.6-52.8-59.2S193.1 219.1 222.5 219.1c29.7 0 53.3 26.8 52.8 59.2C275.3 311 251.9 337.6 222.5 337.6zm195.4 0c-29 0-52.8-26.6-52.8-59.2S388.4 219.1 417.9 219.1c29.7 0 53.3 26.8 52.8 59.2C470.7 311 447.5 337.6 417.9 337.6z"/></svg>
+                        <svg  class="w-5 h-5 !filter-none inline /cursor-pointer text-fuchsia-50 color-fuchsia-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" color="rgb(253 244 255)" fill="rgb(253 244 255)"><path d="M524.5 69.8a1.5 1.5 0 0 0 -.8-.7A485.1 485.1 0 0 0 404.1 32a1.8 1.8 0 0 0 -1.9 .9 337.5 337.5 0 0 0 -14.9 30.6 447.8 447.8 0 0 0 -134.4 0 309.5 309.5 0 0 0 -15.1-30.6 1.9 1.9 0 0 0 -1.9-.9A483.7 483.7 0 0 0 116.1 69.1a1.7 1.7 0 0 0 -.8 .7C39.1 183.7 18.2 294.7 28.4 404.4a2 2 0 0 0 .8 1.4A487.7 487.7 0 0 0 176 479.9a1.9 1.9 0 0 0 2.1-.7A348.2 348.2 0 0 0 208.1 430.4a1.9 1.9 0 0 0 -1-2.6 321.2 321.2 0 0 1 -45.9-21.9 1.9 1.9 0 0 1 -.2-3.1c3.1-2.3 6.2-4.7 9.1-7.1a1.8 1.8 0 0 1 1.9-.3c96.2 43.9 200.4 43.9 295.5 0a1.8 1.8 0 0 1 1.9 .2c2.9 2.4 6 4.9 9.1 7.2a1.9 1.9 0 0 1 -.2 3.1 301.4 301.4 0 0 1 -45.9 21.8 1.9 1.9 0 0 0 -1 2.6 391.1 391.1 0 0 0 30 48.8 1.9 1.9 0 0 0 2.1 .7A486 486 0 0 0 610.7 405.7a1.9 1.9 0 0 0 .8-1.4C623.7 277.6 590.9 167.5 524.5 69.8zM222.5 337.6c-29 0-52.8-26.6-52.8-59.2S193.1 219.1 222.5 219.1c29.7 0 53.3 26.8 52.8 59.2C275.3 311 251.9 337.6 222.5 337.6zm195.4 0c-29 0-52.8-26.6-52.8-59.2S388.4 219.1 417.9 219.1c29.7 0 53.3 26.8 52.8 59.2C470.7 311 447.5 337.6 417.9 337.6z"/></svg>
                     </span>
                     <span class="text-fuchsia-50">
                         @a0a7
@@ -198,25 +259,25 @@
                 <button type="button" 
                     on:click={() => {currentPage = (currentPage + 1) % (Object.keys(Pages).length / 2); console.log(currentPage)}}
                 >
-                    <img class="linkicon inline w-8 mt-4 cursor-pointer transform hover:transform {currentPage >= ((Object.keys(Pages).length / 2) - 1) ? 'transform rotate-180' : ''}" 
+                    <img class="linkicon inline w-8 mt-4 /cursor-pointer transform hover:transform {currentPage >= ((Object.keys(Pages).length / 2) - 1) ? 'transform rotate-180' : ''}" 
                         src="img/icons/arrow.svg" 
                         alt="Right-pointing carousel arrow"
                     />
                 </button>-->
         </span>
             <div class="list overflow-x-hidden inline-block flex-1 md:flex-2 flex-col flex w-full overflow-y-hidden mt-4 md:mb-8">
-                <h2 class="-my-[16px] py-2 z-10 text-shadow overflow-x-hidden overflow-y-visible text-[2rem] md:text-[2.5rem]  text-center font-mastery text-fuchsia-50">projects</h2>
+                <h2 class="-my-[16px] select-none py-2 z-10 text-shadow overflow-x-hidden overflow-y-visible text-[2rem] md:text-[2.5rem]  text-center font-mastery text-fuchsia-50">projects</h2>
                 <div class=" overflow-y-scroll overflow-x-show px-5 mx-auto w-full md:w-fit inline-block flex-1 flex-col flex md:grid md:gap-x-5 md:justify-stretch md:grid-cols-2 pb-10 {loaded == true ? '' : 'invisible'}" bind:this={list}>
                 {#if currentPage === Pages.profile}
                         {#if statistics}
                             {#each Object.entries(statistics) as [key, stats]}
-                            <div><StatsCard {stats} /></div>
+                            <div data-stats-card><StatsCard {stats} /></div>
                             {/each}
                         {/if}
                 {:else if currentPage === Pages.projects}
                         {#if projects}
                             {#each Object.entries(projects) as [key, project], index (key)}
-                            <div class:md:col-span-2={index === Object.entries(projects).length - 1 && Object.entries(projects).length % 2 !== 0} class:mx-auto={index === Object.entries(projects).length - 1 && Object.entries(projects).length % 2 !== 0}>
+                            <div data-stats-card class:md:col-span-2={index === Object.entries(projects).length - 1 && Object.entries(projects).length % 2 !== 0} class:mx-auto={index === Object.entries(projects).length - 1 && Object.entries(projects).length % 2 !== 0}>
                                     <ProjectCard {project} />
                             </div>
                             {/each}
@@ -263,5 +324,19 @@
 
 .text-shadow {
     text-shadow: 0px 4px 1px #09000d, 0px 6px 1px #09000d, 0px 8px 4px #09000d, 4px 4px 1px #09000d, -4px 4px 1px #09000d 
+}
+
+.cursor-follower {
+    mix-blend-mode: screen;
+    filter: blur(0.1px);
+    transition: opacity 0.08s ease-out;
+}
+
+/* Hide default cursor on hover areas */
+.linkicon,
+button,
+a,
+* {
+    cursor: none;
 }
 </style>

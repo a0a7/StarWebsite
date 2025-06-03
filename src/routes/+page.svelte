@@ -80,17 +80,18 @@
             }, 50);
         };
 
-        document.addEventListener('visibilitychange', handleVisibilityChange);
+        window.addEventListener('visibilitychange', handleVisibilityChange);
         window.addEventListener('focus', handleFocus);
-                window.addEventListener('pageshow', handleFocus);
-
+        window.addEventListener('pageshow', handleFocus);
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        document.addEventListener('focus', handleFocus);
+        document.addEventListener('pageshow', handleFocus);
 
         const updateCursorPosition = (e: MouseEvent) => {
             if (cursorFollower) {
                 cursorFollower.style.left = e.clientX + 'px';
                 cursorFollower.style.top = e.clientY + 'px';
                 
-                // Hide cursor follower when hovering StatsCard or mouse is outside viewport
                 if (isHoveringStatsCard || !isMouseInsideViewport) {
                     cursorFollower.style.opacity = '0';
                 } else {
@@ -141,9 +142,13 @@
         document.addEventListener('mouseleave', handleMouseLeave);
         
         return () => {
-            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            window.removeEventListener('visibilitychange', handleVisibilityChange);
             window.removeEventListener('focus', handleFocus);
             window.removeEventListener('pageshow', handleFocus);
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            document.removeEventListener('focus', handleFocus);
+            document.removeEventListener('pageshow', handleFocus);
+
 
             document.removeEventListener('mousemove', updateCursorPosition);
             document.removeEventListener('mouseenter', handleMouseEnter);

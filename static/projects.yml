@@ -13,7 +13,7 @@ effortlesscv:
     Fast, privacy-conscious and easy-to-use tool to create a clean resume in as few clicks as possible.
 
 regions:
-  name: rTMap SVG Map Tool
+  name: rMap SVG Map Tool
   github: motionGIS/RegionMapGenerator
   url: "https://rmap.a0.ax"
   image: motiongis.png

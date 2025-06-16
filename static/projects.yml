@@ -1,7 +1,21 @@
+effortlesscv:
+  name: effortless.cv
+  github: a0a7/effortless.cv
+  url: "https://effortless.cv"
+  image: effortlesscv.png
+  start_date: 2025-05-28
+  end_date: 2025-06-31
+  technologies:
+    - Svelte
+    - Typescript 
+    - Tailwind
+  description: |
+    Fast, privacy-conscious and easy-to-use tool to create a clean resume in as few clicks as possible.
+
 regions:
-  name: regions.pages.dev
+  name: rTMap SVG Map Tool
   github: motionGIS/RegionMapGenerator
-  url: "https://regions.pages.dev"
+  url: "https://rmap.a0.ax"
   image: motiongis.png
   start_date: 2025-05-28
   end_date: 2025-05-31
@@ -32,7 +46,7 @@ create_addons_index:
 muscles_ooo:
   name: Stats for Garmin
   github: a0a7/GymStats
-  url: "https://garminstats.pages.dev/" 
+  url: "https://garmin.a0.ax/" 
   start_date: 2025-01-28
   end_date: 2025-05-02
   technologies:
@@ -51,20 +65,21 @@ gregg_recognition:
     - Python
     - PyTorch 
   description: |
-    Gated Convolutional Neural Network for scanning lines of Gregg Shorthand. Yearlong project for Minnetonka Research.
+    Gated Convolutional Neural Network for digitizing lines of Gregg Shorthand. Yearlong project for Minnetonka Research.
 
 grain_filter:
-  name: Grain Filter
+  name: Grain Filter Web API
   github: a0a7/GrainFilter
-  url: "https://classicanime.pages.dev/"
+  url: "https://filter.a0.ax/"
   start_date: 2024-10-28
   end_date: 2024-10-02
   technologies:
     - Svelte
     - Typescript
     - Tailwind
+    - NodeJS
   description: |
-    Open API & website that adds a 90s-style grain effect to images.
+    Open API & webapp that adds a 90s-style grain effect to images using Cloudflare workers and Node.js with a Svelte frontend.
     
 contain_alibaba:
   name: Alibaba Container
@@ -94,7 +109,7 @@ svelte_strava_visualizer:
   name: strava.tools
   image: motiongis.png
   github: a0a7/strava.tools
-  url: "https://strava-tools.pages.dev/"
+  url: "https://strava.a0.ax/"
   start_date: 2024-04-28
   end_date: 2024-04-02
   technologies:
@@ -126,7 +141,7 @@ transit_cards_map:
   name: Transit Fare Card Map
   image: motiongis.png
   github: a0a7/TransitCardsMap
-  url: "https://transitcards.pages.dev/"
+  url: "https://transitcards.a0.ax/"
   start_date: 2024-02-28
   end_date: 2024-03-29
   technologies:
